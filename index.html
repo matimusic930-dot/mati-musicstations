@@ -346,6 +346,28 @@ function stopSong() {
 }
 
 </script>
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
+  import { getAuth } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
+  import { getFirestore } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
+  import { getStorage } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-storage.js";
 
+  const firebaseConfig = {
+    apiKey: "AIzaSyB3lpzDsg3vt8q3M9_WTQDhulr8Zog7EgE",
+    authDomain: "mati-music-stations.firebaseapp.com",
+    projectId: "mati-music-stations",
+    storageBucket: "mati-music-stations.firebasestorage.app",
+    messagingSenderId: "585822541386",
+    appId: "1:585822541386:web:fc2e620e2ef138e0df78b3",
+    measurementId: "G-9E4GYF8YP2"
+  };
+
+  const app = initializeApp(firebaseConfig);
+  const auth = getAuth(app);
+  const db = getFirestore(app);
+  const storage = getStorage(app);
+
+  console.log("🔥 MATI Firebase Connected!");
+</script>
 </body>
 </html>
