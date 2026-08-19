@@ -1,0 +1,416 @@
+# This workflow uses actions that are not certified by GitHub.
+#<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MATI Music Stations</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #0b0b0b;
+      color: white;
+    }
+
+    header {
+      padding: 18px 20px;
+      background: #151515;
+      border-bottom: 1px solid #292929;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 22px;
+      font-weight: bold;
+    }
+
+    .logo span {
+      color: #c7a86b;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: auto;
+      padding: 25px 18px 100px;
+    }
+
+    .hero {
+      background: #171717;
+      padding: 30px 22px;
+      border-radius: 18px;
+      margin-bottom: 25px;
+    }
+
+    .hero h1 {
+      margin-top: 0;
+      font-size: 35px;
+    }
+
+    .hero p {
+      color: #aaa;
+      line-height: 1.6;
+    }
+
+    button {
+      border: none;
+      padding: 12px 18px;
+      border-radius: 10px;
+      background: #c7a86b;
+      color: #111;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .card {
+      background: #151515;
+      border: 1px solid #292929;
+      border-radius: 16px;
+      padding: 20px;
+      margin-bottom: 18px;
+    }
+
+    .song {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      padding: 14px 0;
+      border-bottom: 1px solid #292929;
+    }
+
+    .song:last-child {
+      border-bottom: none;
+    }
+
+    .cover {
+      width: 55px;
+      height: 55px;
+      border-radius: 10px;
+      background: #c7a86b;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #111;
+      font-size: 24px;
+    }
+
+    .song-info {
+      flex: 1;
+    }
+
+    .song-info h3 {
+      margin: 0 0 5px;
+    }
+
+    .song-info p {
+      margin: 0;
+      color: #888;
+      font-size: 14px;
+    }
+
+    .player {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: #151515;
+      border-top: 1px solid #292929;
+      padding: 13px 18px;
+    }
+
+    .player-inner {
+      max-width: 900px;
+      margin: auto;
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .now-playing {
+      flex: 1;
+    }
+
+    .now-playing small {
+      color: #888;
+    }
+
+    .upload-box {
+      text-align: center;
+      padding: 25px;
+      border: 1px dashed #555;
+      border-radius: 12px;
+    }
+
+    footer {
+      text-align: center;
+      color: #666;
+      margin-top: 30px;
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo">
+    MATI <span>Music Stations</span>
+  </div>
+
+  <button onclick="loginDemo()">
+    Login
+  </button>
+</header>
+
+<div class="container">
+
+  <section class="hero">
+    <h1>Music with Meaning.</h1>
+
+    <p>
+      MATI Music Stations — একটি নতুন Music Platform,
+      যেখানে মানুষ Account তৈরি করে গান শুনতে এবং ভবিষ্যতে
+      নিজের গান Upload করতে পারবে।
+    </p>
+
+    <button onclick="loginDemo()">
+      Get Started
+    </button>
+  </section>
+
+
+  <section class="card">
+
+    <h2>🎵 MATI Music</h2>
+
+    <div class="song">
+
+      <div class="cover">🎵</div>
+
+      <div class="song-info">
+        <h3>MATI Demo Song</h3>
+        <p>MATI Artist</p>
+      </div>
+
+      <button onclick="playSong('MATI Demo Song')">
+        ▶
+      </button>
+
+    </div>
+
+
+    <div class="song">
+
+      <div class="cover">🌙</div>
+
+      <div class="song-info">
+        <h3>Made With Meaning</h3>
+        <p>MATI Music</p>
+      </div>
+
+      <button onclick="playSong('Made With Meaning')">
+        ▶
+      </button>
+
+    </div>
+
+
+    <div class="song">
+
+      <div class="cover">✨</div>
+
+      <div class="song-info">
+        <h3>New Beginning</h3>
+        <p>MATI Creator</p>
+      </div>
+
+      <button onclick="playSong('New Beginning')">
+        ▶
+      </button>
+
+    </div>
+
+  </section>
+
+
+  <section class="card">
+
+    <h2>👤 Account</h2>
+
+    <p>
+      MATI-তে Account তৈরি করে Music Platform ব্যবহার করুন।
+    </p>
+
+    <button onclick="loginDemo()">
+      Create Account
+    </button>
+
+  </section>
+
+
+  <section class="card">
+
+    <h2>📤 Song Upload</h2>
+
+    <div class="upload-box">
+
+      <p>
+        Account তৈরি করার পর Artist নিজের গান Upload করতে পারবে।
+      </p>
+
+      <button onclick="uploadDemo()">
+        Upload Song
+      </button>
+
+    </div>
+
+  </section>
+
+
+  <footer>
+    MATI — MADE WITH MEANING
+  </footer>
+
+</div>
+
+
+<div class="player">
+
+  <div class="player-inner">
+
+    <div class="now-playing">
+
+      <b id="currentSong">
+        কোনো গান চলছে না
+      </b>
+
+      <br>
+
+      <small>
+        MATI Music Player
+      </small>
+
+    </div>
+
+    <button onclick="stopSong()">
+      ■
+    </button>
+
+  </div>
+
+</div>
+
+
+<script>
+
+function loginDemo() {
+
+  alert(
+    "MATI Account\n\n" +
+    "Firebase Authentication যুক্ত হলে এখানে " +
+    "Real Login / Register কাজ করবে।"
+  );
+
+}
+
+
+function uploadDemo() {
+
+  alert(
+    "Song Upload\n\n" +
+    "Firebase Storage যুক্ত হলে এখানে " +
+    "Real Song Upload করা যাবে।"
+  );
+
+}
+
+
+function playSong(song) {
+
+  document.getElementById("currentSong").innerText =
+    "▶ " + song;
+
+}
+
+
+function stopSong() {
+
+  document.getElementById("currentSong").innerText =
+    "কোনো গান চলছে না";
+
+}
+
+</script>
+
+</body>
+</html> They are provided by a third-party and are governed by
+# separate terms of service, privacy policy, and support
+# documentation.
+
+# This workflow lets you generate SLSA provenance file for your project.
+# The generation satisfies level 3 for the provenance requirements - see https://slsa.dev/spec/v0.1/requirements
+# The project is an initiative of the OpenSSF (openssf.org) and is developed at
+# https://github.com/slsa-framework/slsa-github-generator.
+# The provenance file can be verified using https://github.com/slsa-framework/slsa-verifier.
+# For more information about SLSA and how it improves the supply-chain, visit slsa.dev.
+
+name: SLSA generic generator
+on:
+  workflow_dispatch:
+  release:
+    types: [created]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    outputs:
+      digests: ${{ steps.hash.outputs.digests }}
+
+    steps:
+      - uses: actions/checkout@v4
+
+      # ========================================================
+      #
+      # Step 1: Build your artifacts.
+      #
+      # ========================================================
+      - name: Build artifacts
+        run: |
+            # These are some amazing artifacts.
+            echo "artifact1" > artifact1
+            echo "artifact2" > artifact2
+
+      # ========================================================
+      #
+      # Step 2: Add a step to generate the provenance subjects
+      #         as shown below. Update the sha256 sum arguments
+      #         to include all binaries that you generate
+      #         provenance for.
+      #
+      # ========================================================
+      - name: Generate subject for provenance
+        id: hash
+        run: |
+          set -euo pipefail
+
+          # List the artifacts the provenance will refer to.
+          files=$(ls artifact*)
+          # Generate the subjects (base64 encoded).
+          echo "hashes=$(sha256sum $files | base64 -w0)" >> "${GITHUB_OUTPUT}"
+
+  provenance:
+    needs: [build]
+    permissions:
+      actions: read   # To read the workflow path.
+      id-token: write # To sign the provenance.
+      contents: write # To add assets to a release.
+    uses: slsa-framework/slsa-github-generator/.github/workflows/generator_generic_slsa3.yml@v1.4.0
+    with:
+      base64-subjects: "${{ needs.build.outputs.digests }}"
+      upload-assets: true # Optional: Upload to a new release
