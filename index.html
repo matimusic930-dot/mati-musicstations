@@ -24,6 +24,7 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
+      gap: 12px;
     }
 
     .logo {
@@ -33,6 +34,16 @@
 
     .logo span {
       color: #c7a86b;
+    }
+
+    .header-user {
+      color: #aaa;
+      font-size: 13px;
+      display: none;
+      max-width: 160px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
     }
 
     .container {
@@ -68,6 +79,11 @@
       cursor: pointer;
     }
 
+    button.secondary {
+      background: #292929;
+      color: white;
+    }
+
     .card {
       background: #151515;
       border: 1px solid #292929;
@@ -98,6 +114,7 @@
       justify-content: center;
       color: #111;
       font-size: 24px;
+      flex-shrink: 0;
     }
 
     .song-info {
@@ -152,222 +169,147 @@
       color: #666;
       margin-top: 30px;
     }
+
+    /* Login/Register Modal */
+
+    .modal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,.78);
+      z-index: 1000;
+      align-items: center;
+      justify-content: center;
+      padding: 18px;
+    }
+
+    .modal.show {
+      display: flex;
+    }
+
+    .modal-box {
+      width: 100%;
+      max-width: 420px;
+      background: #171717;
+      border: 1px solid #333;
+      border-radius: 18px;
+      padding: 24px;
+      box-shadow: 0 20px 60px rgba(0,0,0,.5);
+    }
+
+    .modal-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 18px;
+    }
+
+    .modal-head h2 {
+      margin: 0;
+    }
+
+    .close {
+      background: transparent;
+      color: #aaa;
+      font-size: 25px;
+      padding: 4px 10px;
+    }
+
+    .auth-input {
+      width: 100%;
+      padding: 13px;
+      margin: 7px 0;
+      border-radius: 10px;
+      border: 1px solid #3a3a3a;
+      background: #0e0e0e;
+      color: white;
+      outline: none;
+    }
+
+    .auth-input:focus {
+      border-color: #c7a86b;
+    }
+
+    .auth-actions {
+      display: flex;
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    .auth-actions button {
+      flex: 1;
+    }
+
+    .auth-message {
+      min-height: 20px;
+      margin-top: 12px;
+      font-size: 14px;
+      color: #c7a86b;
+    }
+
+    .auth-switch {
+      color: #aaa;
+      text-align: center;
+      margin: 16px 0 0;
+      font-size: 14px;
+    }
+
+    @media (max-width: 600px) {
+      header {
+        align-items: flex-start;
+      }
+
+      .hero h1 {
+        font-size: 29px;
+      }
+
+      .auth-actions {
+        flex-direction: column;
+      }
+    }
   </style>
 </head>
 
 <body>
 
 <header>
+
   <div class="logo">
     MATI <span>Music Stations</span>
   </div>
 
-  <button onclick="loginDemo()">
-    Login
-  </button>
-</header>
+  <div style="display:flex;align-items:center;gap:10px;">
 
-<div class="container">
+    <div id="headerUser" class="header-user"></div>
 
-  <section class="hero">
-    <h1>Music with Meaning.</h1>
-
-    <p>
-      MATI Music Stations — একটি নতুন Music Platform,
-      যেখানে মানুষ Account তৈরি করে গান শুনতে এবং ভবিষ্যতে
-      নিজের গান Upload করতে পারবে।
-    </p>
-
-    <button onclick="loginDemo()">
-      Get Started
-    </button>
-  </section>
-
-
-  <section class="card">
-
-    <h2>🎵 MATI Music</h2>
-
-    <div class="song">
-
-      <div class="cover">🎵</div>
-
-      <div class="song-info">
-        <h3>MATI Demo Song</h3>
-        <p>MATI Artist</p>
-      </div>
-
-      <button onclick="playSong('MATI Demo Song')">
-        ▶
-      </button>
-
-    </div>
-
-
-    <div class="song">
-
-      <div class="cover">🌙</div>
-
-      <div class="song-info">
-        <h3>Made With Meaning</h3>
-        <p>MATI Music</p>
-      </div>
-
-      <button onclick="playSong('Made With Meaning')">
-        ▶
-      </button>
-
-    </div>
-
-
-    <div class="song">
-
-      <div class="cover">✨</div>
-
-      <div class="song-info">
-        <h3>New Beginning</h3>
-        <p>MATI Creator</p>
-      </div>
-
-      <button onclick="playSong('New Beginning')">
-        ▶
-      </button>
-
-    </div>
-
-  </section>
-
-
-  <section class="card">
-
-    <h2>👤 Account</h2>
-
-    <p>
-      MATI-তে Account তৈরি করে Music Platform ব্যবহার করুন।
-    </p>
-
-    <button onclick="loginDemo()">
-      Create Account
-    </button>
-
-  </section>
-
-
-  <section class="card">
-
-    <h2>📤 Song Upload</h2>
-
-    <div class="upload-box">
-
-      <p>
-        Account তৈরি করার পর Artist নিজের গান Upload করতে পারবে।
-      </p>
-
-      <button onclick="uploadDemo()">
-        Upload Song
-      </button>
-
-    </div>
-
-  </section>
-
-
-  <footer>
-    MATI — MADE WITH MEANING
-  </footer>
-
-</div>
-
-
-<div class="player">
-
-  <div class="player-inner">
-
-    <div class="now-playing">
-
-      <b id="currentSong">
-        কোনো গান চলছে না
-      </b>
-
-      <br>
-
-      <small>
-        MATI Music Player
-      </small>
-
-    </div>
-
-    <button onclick="stopSong()">
-      ■
+    <button id="authButton" onclick="openAuth()">
+      Login
     </button>
 
   </div>
 
-</div>
+</header>
 
 
-<script>
+<div class="container">
 
-function loginDemo() {
+  <section class="hero">
 
-  alert(
-    "MATI Account\n\n" +
-    "Firebase Authentication যুক্ত হলে এখানে " +
-    "Real Login / Register কাজ করবে।"
-  );
+    <h1>
+      Music with Meaning.
+    </h1>
 
-}
+    <p>
+      MATI Music Stations — একটি নতুন Music Platform,
+      যেখানে মানুষ Account তৈরি করে গান শুনতে এবং
+      ভবিষ্যতে নিজের গান Upload করতে পারবে।
+    </p>
 
+    <button onclick="openAuth()">
+      Get Started
+    </button>
 
-function uploadDemo() {
-
-  alert(
-    "Song Upload\n\n" +
-    "Firebase Storage যুক্ত হলে এখানে " +
-    "Real Song Upload করা যাবে।"
-  );
-
-}
+  </section>
 
 
-function playSong(song) {
-
-  document.getElementById("currentSong").innerText =
-    "▶ " + song;
-
-}
-
-
-function stopSong() {
-
-  document.getElementById("currentSong").innerText =
-    "কোনো গান চলছে না";
-
-}
-
-</script>
-<script type="module">
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
-  import { getAuth } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
-  import { getFirestore } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
-  import { getStorage } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-storage.js";
-
-  const firebaseConfig = {
-    apiKey: "AIzaSyB3lpzDsg3vt8q3M9_WTQDhulr8Zog7EgE",
-    authDomain: "mati-music-stations.firebaseapp.com",
-    projectId: "mati-music-stations",
-    storageBucket: "mati-music-stations.firebasestorage.app",
-    messagingSenderId: "585822541386",
-    appId: "1:585822541386:web:fc2e620e2ef138e0df78b3",
-    measurementId: "G-9E4GYF8YP2"
-  };
-
-  const app = initializeApp(firebaseConfig);
-  const auth = getAuth(app);
-  const db = getFirestore(app);
-  const storage = getStorage(app);
-
-  console.log("🔥 MATI Firebase Connected!");
-</script>
-</body>
-</html>
+ 
