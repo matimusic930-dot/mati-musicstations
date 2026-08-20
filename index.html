@@ -1,373 +1,1519 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-‎ <!DOCTYPE html>
-‎<html lang="bn">
-‎<head>
-‎  <meta charset="UTF-8">
-‎  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-‎  <title>MATI Music Stations</title>
-‎
-‎  <style>
-‎    * {
-‎      box-sizing: border-box;
-‎    }
-‎
-‎    body {
-‎      margin: 0;
-‎      font-family: Arial, sans-serif;
-‎      background: #0b0b0b;
-‎      color: white;
-‎    }
-‎
-‎    header {
-‎      padding: 18px 20px;
-‎      background: #151515;
-‎      border-bottom: 1px solid #292929;
-‎      display: flex;
-‎      justify-content: space-between;
-‎      align-items: center;
-‎    }
-‎
-‎    .logo {
-‎      font-size: 22px;
-‎      font-weight: bold;
-‎    }
-‎
-‎    .logo span {
-‎      color: #c7a86b;
-‎    }
-‎
-‎    .container {
-‎      max-width: 900px;
-‎      margin: auto;
-‎      padding: 25px 18px 100px;
-‎    }
-‎
-‎    .hero {
-‎      background: #171717;
-‎      padding: 30px 22px;
-‎      border-radius: 18px;
-‎      margin-bottom: 25px;
-‎    }
-‎
-‎    .hero h1 {
-‎      margin-top: 0;
-‎      font-size: 35px;
-‎    }
-‎
-‎    .hero p {
-‎      color: #aaa;
-‎      line-height: 1.6;
-‎    }
-‎
-‎    button {
-‎      border: none;
-‎      padding: 12px 18px;
-‎      border-radius: 10px;
-‎      background: #c7a86b;
-‎      color: #111;
-‎      font-weight: bold;
-‎      cursor: pointer;
-‎    }
-‎
-‎    .card {
-‎      background: #151515;
-‎      border: 1px solid #292929;
-‎      border-radius: 16px;
-‎      padding: 20px;
-‎      margin-bottom: 18px;
-‎    }
-‎
-‎    .song {
-‎      display: flex;
-‎      align-items: center;
-‎      gap: 15px;
-‎      padding: 14px 0;
-‎      border-bottom: 1px solid #292929;
-‎    }
-‎
-‎    .song:last-child {
-‎      border-bottom: none;
-‎    }
-‎
-‎    .cover {
-‎      width: 55px;
-‎      height: 55px;
-‎      border-radius: 10px;
-‎      background: #c7a86b;
-‎      display: flex;
-‎      align-items: center;
-‎      justify-content: center;
-‎      color: #111;
-‎      font-size: 24px;
-‎    }
-‎
-‎    .song-info {
-‎      flex: 1;
-‎    }
-‎
-‎    .song-info h3 {
-‎      margin: 0 0 5px;
-‎    }
-‎
-‎    .song-info p {
-‎      margin: 0;
-‎      color: #888;
-‎      font-size: 14px;
-‎    }
-‎
-‎    .player {
-‎      position: fixed;
-‎      bottom: 0;
-‎      left: 0;
-‎      right: 0;
-‎      background: #151515;
-‎      border-top: 1px solid #292929;
-‎      padding: 13px 18px;
-‎    }
-‎
-‎    .player-inner {
-‎      max-width: 900px;
-‎      margin: auto;
-‎      display: flex;
-‎      align-items: center;
-‎      gap: 15px;
-‎    }
-‎
-‎    .now-playing {
-‎      flex: 1;
-‎    }
-‎
-‎    .now-playing small {
-‎      color: #888;
-‎    }
-‎
-‎    .upload-box {
-‎      text-align: center;
-‎      padding: 25px;
-‎      border: 1px dashed #555;
-‎      border-radius: 12px;
-‎    }
-‎
-‎    footer {
-‎      text-align: center;
-‎      color: #666;
-‎      margin-top: 30px;
-‎    }
-‎  </style>
-‎</head>
-‎
-‎<body>
-‎
-‎<header>
-‎  <div class="logo">
-‎    MATI <span>Music Stations</span>
-‎  </div>
-‎
-‎  <button onclick="loginDemo()">
-‎    Login
-‎  </button>
-‎</header>
-‎
-‎<div class="container">
-‎
-‎  <section class="hero">
-‎    <h1>Music with Meaning.</h1>
-‎
-‎    <p>
-‎      MATI Music Stations — একটি নতুন Music Platform,
-‎      যেখানে মানুষ Account তৈরি করে গান শুনতে এবং ভবিষ্যতে
-‎      নিজের গান Upload করতে পারবে।
-‎    </p>
-‎
-‎    <button onclick="loginDemo()">
-‎      Get Started
-‎    </button>
-‎  </section>
-‎
-‎
-‎  <section class="card">
-‎
-‎    <h2>🎵 MATI Music</h2>
-‎
-‎    <div class="song">
-‎
-‎      <div class="cover">🎵</div>
-‎
-‎      <div class="song-info">
-‎        <h3>MATI Demo Song</h3>
-‎        <p>MATI Artist</p>
-‎      </div>
-‎
-‎      <button onclick="playSong('MATI Demo Song')">
-‎        ▶
-‎      </button>
-‎
-‎    </div>
-‎
-‎
-‎    <div class="song">
-‎
-‎      <div class="cover">🌙</div>
-‎
-‎      <div class="song-info">
-‎        <h3>Made With Meaning</h3>
-‎        <p>MATI Music</p>
-‎      </div>
-‎
-‎      <button onclick="playSong('Made With Meaning')">
-‎        ▶
-‎      </button>
-‎
-‎    </div>
-‎
-‎
-‎    <div class="song">
-‎
-‎      <div class="cover">✨</div>
-‎
-‎      <div class="song-info">
-‎        <h3>New Beginning</h3>
-‎        <p>MATI Creator</p>
-‎      </div>
-‎
-‎      <button onclick="playSong('New Beginning')">
-‎        ▶
-‎      </button>
-‎
-‎    </div>
-‎
-‎  </section>
-‎
-‎
-‎  <section class="card">
-‎
-‎    <h2>👤 Account</h2>
-‎
-‎    <p>
-‎      MATI-তে Account তৈরি করে Music Platform ব্যবহার করুন।
-‎    </p>
-‎
-‎    <button onclick="loginDemo()">
-‎      Create Account
-‎    </button>
-‎
-‎  </section>
-‎
-‎
-‎  <section class="card">
-‎
-‎    <h2>📤 Song Upload</h2>
-‎
-‎    <div class="upload-box">
-‎
-‎      <p>
-‎        Account তৈরি করার পর Artist নিজের গান Upload করতে পারবে।
-‎      </p>
-‎
-‎      <button onclick="uploadDemo()">
-‎        Upload Song
-‎      </button>
-‎
-‎    </div>
-‎
-‎  </section>
-‎
-‎
-‎  <footer>
-‎    MATI — MADE WITH MEANING
-‎  </footer>
-‎
-‎</div>
-‎
-‎
-‎<div class="player">
-‎
-‎  <div class="player-inner">
-‎
-‎    <div class="now-playing">
-‎
-‎      <b id="currentSong">
-‎        কোনো গান চলছে না
-‎      </b>
-‎
-‎      <br>
-‎
-‎      <small>
-‎        MATI Music Player
-‎      </small>
-‎
-‎    </div>
-‎
-‎    <button onclick="stopSong()">
-‎      ■
-‎    </button>
-‎
-‎  </div>
-‎
-‎</div>
-‎
-‎
-‎<script>
-‎
-‎function loginDemo() {
-‎
-‎  alert(
-‎    "MATI Account\n\n" +
-‎    "Firebase Authentication যুক্ত হলে এখানে " +
-‎    "Real Login / Register কাজ করবে।"
-‎  );
-‎
-‎}
-‎
-‎
-‎function uploadDemo() {
-‎
-‎  alert(
-‎    "Song Upload\n\n" +
-‎    "Firebase Storage যুক্ত হলে এখানে " +
-‎    "Real Song Upload করা যাবে।"
-‎  );
-‎
-‎}
-‎
-‎
-‎function playSong(song) {
-‎
-‎  document.getElementById("currentSong").innerText =
-‎    "▶ " + song;
-‎
-‎}
-‎
-‎
-‎function stopSong() {
-‎
-‎  document.getElementById("currentSong").innerText =
-‎    "কোনো গান চলছে না";
-‎
-‎}
-‎
-‎</script>
-‎<!-- Firebase -->
-‎<script type="module">
-‎  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
-‎  import { getAuth } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
-‎  import { getFirestore } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
-‎  import { getStorage } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-storage.js";
-‎
-‎  const firebaseConfig = {
-‎    // এখানে Firebase থেকে Copy করা config বসাবে
-‎  };
-‎
-‎  const app = initializeApp(firebaseConfig);
-‎
-‎  const auth = getAuth(app);
-‎  const db = getFirestore(app);
-‎  const storage = getStorage(app);
-‎
-‎  console.log("🔥 Firebase Connected Successfully!");
-‎</script>
-‎
-‎</body>
-‎</html>
-‎
- 
+<title>MATI — Music Stations</title>
+
+<style>
+*{
+  box-sizing:border-box;
+}
+
+body{
+  margin:0;
+  background:#080908;
+  color:#fff;
+  font-family:Arial,sans-serif;
+}
+
+header{
+  position:sticky;
+  top:0;
+  z-index:20;
+  padding:15px 5%;
+  background:#11120f;
+  border-bottom:1px solid #292b26;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+.logo{
+  font-size:22px;
+  font-weight:bold;
+}
+
+.logo span{
+  color:#c9a66b;
+}
+
+nav{
+  display:flex;
+  gap:15px;
+  align-items:center;
+}
+
+nav a{
+  color:#ddd;
+  text-decoration:none;
+  font-size:14px;
+}
+
+button{
+  border:0;
+  border-radius:8px;
+  padding:10px 15px;
+  font-weight:bold;
+  cursor:pointer;
+}
+
+.dark{
+  background:#25261f;
+  color:white;
+}
+
+.primary{
+  background:#c9a66b;
+  color:#111;
+}
+
+.danger{
+  background:#d9534f;
+  color:white;
+}
+
+main{
+  max-width:1100px;
+  margin:auto;
+  padding:25px 5% 120px;
+}
+
+.hero{
+  padding:50px 25px;
+  border-radius:20px;
+  background:linear-gradient(135deg,#181a14,#0b2117);
+  margin-bottom:30px;
+}
+
+.hero h1{
+  margin:0;
+  font-size:42px;
+}
+
+.hero p{
+  color:#aaa;
+}
+
+.stations{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(140px,1fr));
+  gap:12px;
+}
+
+.station{
+  padding:20px;
+  text-align:center;
+  background:#121310;
+  border:1px solid #292b26;
+  border-radius:14px;
+  cursor:pointer;
+}
+
+.station.active{
+  border-color:#c9a66b;
+}
+
+.songs{
+  display:grid;
+  gap:12px;
+  margin-top:15px;
+}
+
+.song{
+  background:#121310;
+  border:1px solid #292b26;
+  border-radius:14px;
+  padding:14px;
+  display:grid;
+  grid-template-columns:75px 1fr auto;
+  gap:14px;
+  align-items:center;
+}
+
+.cover{
+  width:75px;
+  height:75px;
+  object-fit:cover;
+  border-radius:10px;
+  background:#24251f;
+}
+
+.title{
+  font-size:17px;
+  font-weight:bold;
+}
+
+.artist{
+  color:#999;
+  font-size:13px;
+  margin-top:5px;
+}
+
+.desc{
+  color:#777;
+  font-size:12px;
+  margin-top:5px;
+}
+
+.play{
+  background:#c9a66b;
+  color:#111;
+}
+
+.player{
+  position:fixed;
+  left:0;
+  right:0;
+  bottom:0;
+  z-index:30;
+  padding:8px 5%;
+  background:#11120f;
+  border-top:1px solid #333;
+}
+
+.player audio{
+  width:100%;
+}
+
+.modal{
+  display:none;
+  position:fixed;
+  inset:0;
+  z-index:50;
+  background:#000b;
+  align-items:center;
+  justify-content:center;
+  padding:20px;
+}
+
+.box{
+  width:min(650px,100%);
+  max-height:90vh;
+  overflow:auto;
+  background:#121310;
+  border:1px solid #3a3b34;
+  border-radius:16px;
+  padding:20px;
+}
+
+.close{
+  float:right;
+}
+
+input,
+select,
+textarea{
+  width:100%;
+  padding:12px;
+  margin:7px 0 12px;
+  background:#090a09;
+  color:#fff;
+  border:1px solid #3a3b34;
+  border-radius:8px;
+}
+
+label{
+  color:#c9a66b;
+  font-size:13px;
+}
+
+.row{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:15px;
+}
+
+.status{
+  color:#c9a66b;
+  font-size:13px;
+  margin:10px 0;
+}
+
+.adminSong{
+  padding:15px 0;
+  border-top:1px solid #292b26;
+}
+
+.muted{
+  color:#999;
+  font-size:13px;
+}
+
+@media(max-width:650px){
+
+  nav a{
+    display:none;
+  }
+
+  .hero h1{
+    font-size:32px;
+  }
+
+  .song{
+    grid-template-columns:60px 1fr;
+  }
+
+  .cover{
+    width:60px;
+    height:60px;
+  }
+
+  .song .play{
+    grid-column:2;
+  }
+
+  .row{
+    grid-template-columns:1fr;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+
+<div class="logo">
+MATI <span>Music Stations</span>
+</div>
+
+<nav>
+<a href="#home">Home</a>
+<a href="#stations">Stations</a>
+<a href="#songs">Songs</a>
+
+<button id="adminButton" class="dark">
+Admin
+</button>
+
+</nav>
+
+</header>
+
+
+<main id="home">
+
+<section class="hero">
+
+<h1>🎵 MATI Music Stations</h1>
+
+<p>
+Made With Meaning — MATI-এর গান শুনুন, আবিষ্কার করুন এবং উপভোগ করুন।
+</p>
+
+</section>
+
+
+<h2 id="stations">
+📻 Stations
+</h2>
+
+<div class="stations">
+
+<div class="station active" data-station="ALL">
+🔥
+<br>
+<b>All Songs</b>
+</div>
+
+<div class="station" data-station="MATI Hits">
+🔥
+<br>
+<b>MATI Hits</b>
+</div>
+
+<div class="station" data-station="Love">
+❤️
+<br>
+<b>Love</b>
+</div>
+
+<div class="station" data-station="Artist">
+🎤
+<br>
+<b>Artist</b>
+</div>
+
+<div class="station" data-station="Relax">
+🌙
+<br>
+<b>Relax</b>
+</div>
+
+</div>
+
+
+<h2 id="songs">
+🎶 Songs
+</h2>
+
+<div id="songList" class="songs">
+
+<div class="muted">
+গান লোড হচ্ছে...
+</div>
+
+</div>
+
+</main>
+
+
+<div class="player">
+
+<audio id="player" controls></audio>
+
+</div>
+
+
+
+<!-- ADMIN LOGIN -->
+
+<div id="loginModal" class="modal">
+
+<div class="box">
+
+<button class="dark close" id="closeLogin">
+✕
+</button>
+
+<h2>
+🔐 MATI Admin Login
+</h2>
+
+<label>
+Admin Email
+</label>
+
+<input
+id="email"
+type="email"
+placeholder="Admin email"
+>
+
+<label>
+Password
+</label>
+
+<input
+id="password"
+type="password"
+placeholder="Password"
+>
+
+<button id="loginButton" class="primary">
+Login
+</button>
+
+<div id="loginStatus" class="status"></div>
+
+</div>
+
+</div>
+
+
+
+<!-- ADMIN PANEL -->
+
+<div id="adminModal" class="modal">
+
+<div class="box">
+
+<button class="dark close" id="closeAdmin">
+✕
+</button>
+
+<h2>
+🎛️ MATI Admin Panel
+</h2>
+
+<button id="logoutButton" class="dark">
+Logout
+</button>
+
+
+<h3>
+📤 Upload Song
+</h3>
+
+
+<div class="row">
+
+<div>
+
+<label>
+Song Title
+</label>
+
+<input
+id="title"
+placeholder="গানের নাম"
+>
+
+
+<label>
+Artist
+</label>
+
+<input
+id="artist"
+placeholder="শিল্পীর নাম"
+>
+
+
+<label>
+Genre
+</label>
+
+<select id="genre">
+
+<option>Pop</option>
+<option>Love</option>
+<option>Islamic</option>
+<option>Rock</option>
+<option>Folk</option>
+<option>Other</option>
+
+</select>
+
+
+<label>
+Station
+</label>
+
+<select id="station">
+
+<option>MATI Hits</option>
+<option>Love</option>
+<option>Artist</option>
+<option>Relax</option>
+
+</select>
+
+</div>
+
+
+<div>
+
+<label>
+Cover Photo
+</label>
+
+<input
+id="cover"
+type="file"
+accept="image/*"
+>
+
+
+<label>
+Audio File
+</label>
+
+<input
+id="audio"
+type="file"
+accept="audio/*"
+>
+
+
+<label>
+Publish
+</label>
+
+<select id="published">
+
+<option value="true">
+Published
+</option>
+
+<option value="false">
+Unpublished
+</option>
+
+</select>
+
+
+<label>
+Description
+</label>
+
+<textarea
+id="description"
+rows="5"
+placeholder="গানের তথ্য"
+></textarea>
+
+</div>
+
+</div>
+
+
+<button id="uploadButton" class="primary">
+📤 Upload & Save
+</button>
+
+<div id="uploadStatus" class="status"></div>
+
+
+<h3>
+🎵 Manage Songs
+</h3>
+
+<div id="adminSongs">
+
+<div class="muted">
+Loading...
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+
+
+<script type="module">
+
+import {
+initializeApp
+}
+from
+"https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+
+
+import {
+getAuth,
+onAuthStateChanged,
+signInWithEmailAndPassword,
+signOut
+}
+from
+"https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+
+
+import {
+getFirestore,
+collection,
+addDoc,
+getDocs,
+doc,
+updateDoc,
+deleteDoc,
+serverTimestamp,
+query,
+orderBy
+}
+from
+"https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+
+import {
+getStorage,
+ref,
+uploadBytesResumable,
+getDownloadURL,
+deleteObject
+}
+from
+"https://www.gstatic.com/firebasejs/10.12.2/firebase-storage.js";
+
+
+
+/* =========================
+   MATI FIREBASE CONFIG
+========================= */
+
+const firebaseConfig = {
+
+apiKey:
+"AIzaSyB3lpzDsg3vt8q3M9_WTQDhulr8Zog7EgE",
+
+authDomain:
+"mati-music-stations.firebaseapp.com",
+
+projectId:
+"mati-music-stations",
+
+storageBucket:
+"mati-music-stations.firebasestorage.app",
+
+messagingSenderId:
+"585822541386",
+
+appId:
+"1:585822541386:web:fc2e620e2ef138e0df78b3",
+
+measurementId:
+"G-9E4GYF8YP2"
+
+};
+
+
+
+/* =========================
+   FIREBASE START
+========================= */
+
+const app =
+initializeApp(firebaseConfig);
+
+const auth =
+getAuth(app);
+
+const db =
+getFirestore(app);
+
+const storage =
+getStorage(app);
+
+
+
+const $ =
+id =>
+document.getElementById(id);
+
+
+
+const player =
+$("player");
+
+
+
+function safe(value){
+
+return String(value ?? "")
+.replace(
+/[&<>"']/g,
+
+m => ({
+
+"&":"&amp;",
+"<":"&lt;",
+">":"&gt;",
+'"':"&quot;",
+"'":"&#039;"
+
+}[m])
+
+);
+
+}
+
+
+
+/* =========================
+   MODALS
+========================= */
+
+$("adminButton").onclick = () => {
+
+if(auth.currentUser){
+
+$("adminModal").style.display =
+"flex";
+
+loadAdminSongs();
+
+}else{
+
+$("loginModal").style.display =
+"flex";
+
+}
+
+};
+
+
+$("closeLogin").onclick = () => {
+
+$("loginModal").style.display =
+"none";
+
+};
+
+
+$("closeAdmin").onclick = () => {
+
+$("adminModal").style.display =
+"none";
+
+};
+
+
+
+/* =========================
+   LOGIN
+========================= */
+
+$("loginButton").onclick =
+async () => {
+
+try{
+
+await signInWithEmailAndPassword(
+
+auth,
+
+$("email").value,
+
+$("password").value
+
+);
+
+
+$("loginStatus").textContent =
+"✅ Login successful";
+
+$("loginModal").style.display =
+"none";
+
+$("adminModal").style.display =
+"flex";
+
+loadAdminSongs();
+
+
+}catch(error){
+
+$("loginStatus").textContent =
+"❌ " + error.message;
+
+}
+
+};
+
+
+
+/* =========================
+   LOGOUT
+========================= */
+
+$("logoutButton").onclick =
+async () => {
+
+await signOut(auth);
+
+$("adminModal").style.display =
+"none";
+
+};
+
+
+
+/* =========================
+   AUTH CHECK
+========================= */
+
+onAuthStateChanged(
+auth,
+user => {
+
+if(user){
+
+loadAdminSongs();
+
+}
+
+});
+
+
+
+/* =========================
+   PUBLIC SONGS
+========================= */
+
+async function loadSongs(
+selectedStation = "ALL"
+){
+
+const list =
+$("songList");
+
+list.innerHTML =
+'<div class="muted">গান লোড হচ্ছে...</div>';
+
+
+try{
+
+const songQuery =
+query(
+collection(db,"songs"),
+orderBy("createdAt","desc")
+);
+
+
+const snapshot =
+await getDocs(songQuery);
+
+
+list.innerHTML = "";
+
+let total = 0;
+
+
+snapshot.forEach(
+documentSnapshot => {
+
+const song =
+documentSnapshot.data();
+
+
+if(song.published === false){
+
+return;
+
+}
+
+
+if(
+selectedStation !== "ALL" &&
+song.station !== selectedStation
+){
+
+return;
+
+}
+
+
+total++;
+
+
+const element =
+document.createElement("div");
+
+
+element.className =
+"song";
+
+
+element.innerHTML = `
+
+<img
+class="cover"
+src="${safe(song.coverUrl || "")}"
+alt="Cover"
+>
+
+<div>
+
+<div class="title">
+${safe(song.title)}
+</div>
+
+<div class="artist">
+${safe(song.artist)}
+•
+${safe(song.genre || "Music")}
+•
+${safe(song.station || "")}
+</div>
+
+<div class="desc">
+${safe(song.description || "")}
+</div>
+
+</div>
+
+<button class="play">
+▶ Play
+</button>
+
+`;
+
+
+element
+.querySelector(".play")
+.onclick = () => {
+
+player.src =
+song.audioUrl;
+
+player.play();
+
+};
+
+
+list.appendChild(element);
+
+});
+
+
+
+if(total === 0){
+
+list.innerHTML =
+
+'<div class="muted">এই station-এ এখনো কোনো published গান নেই।</div>';
+
+}
+
+
+}catch(error){
+
+console.error(error);
+
+list.innerHTML =
+
+'<div class="muted">গান লোড করা যায়নি। Firebase Rules পরীক্ষা করুন।</div>';
+
+}
+
+}
+
+
+
+/* =========================
+   STATION FILTER
+========================= */
+
+document
+.querySelectorAll(".station")
+.forEach(
+station => {
+
+station.onclick = () => {
+
+document
+.querySelectorAll(".station")
+.forEach(
+item =>
+item.classList.remove("active")
+);
+
+station.classList.add("active");
+
+loadSongs(
+station.dataset.station
+);
+
+};
+
+});
+
+
+
+/* =========================
+   UPLOAD SONG
+========================= */
+
+$("uploadButton").onclick =
+async () => {
+
+
+const title =
+$("title").value.trim();
+
+
+const artist =
+$("artist").value.trim();
+
+
+const audioFile =
+$("audio").files[0];
+
+
+const coverFile =
+$("cover").files[0];
+
+
+if(
+!title ||
+!artist ||
+!audioFile
+){
+
+$("uploadStatus").textContent =
+"⚠️ Title, Artist এবং Audio file দিন।";
+
+return;
+
+}
+
+
+$("uploadButton").disabled =
+true;
+
+
+try{
+
+
+const uniqueName =
+Date.now() +
+"_" +
+Math.random()
+.toString(36)
+.substring(2);
+
+
+const audioReference =
+ref(
+storage,
+"songs/audio/" +
+uniqueName +
+"_" +
+audioFile.name
+);
+
+
+const audioUpload =
+uploadBytesResumable(
+audioReference,
+audioFile
+);
+
+
+await new Promise(
+(resolve,reject) => {
+
+audioUpload.on(
+
+"state_changed",
+
+snapshot => {
+
+const progress =
+Math.round(
+snapshot.bytesTransferred /
+snapshot.totalBytes *
+100
+);
+
+$("uploadStatus").textContent =
+"Audio Upload: " +
+progress +
+"%";
+
+},
+
+reject,
+
+resolve
+
+);
+
+});
+
+
+const audioUrl =
+await getDownloadURL(
+audioUpload.snapshot.ref
+);
+
+
+let coverUrl = "";
+
+let coverPath = "";
+
+
+if(coverFile){
+
+coverPath =
+"songs/covers/" +
+uniqueName +
+"_" +
+coverFile.name;
+
+
+const coverReference =
+ref(
+storage,
+coverPath
+);
+
+
+const coverUpload =
+uploadBytesResumable(
+coverReference,
+coverFile
+);
+
+
+await new Promise(
+(resolve,reject) => {
+
+coverUpload.on(
+"state_changed",
+()=>{},
+reject,
+resolve
+);
+
+});
+
+
+coverUrl =
+await getDownloadURL(
+coverUpload.snapshot.ref
+);
+
+}
+
+
+await addDoc(
+collection(db,"songs"),
+{
+
+title:title,
+
+artist:artist,
+
+genre:$("genre").value,
+
+station:$("station").value,
+
+description:
+$("description").value,
+
+coverUrl:coverUrl,
+
+audioUrl:audioUrl,
+
+audioPath:
+audioUpload.snapshot.ref.fullPath,
+
+coverPath:coverPath,
+
+published:
+$("published").value === "true",
+
+createdAt:
+serverTimestamp()
+
+}
+
+);
+
+
+$("uploadStatus").textContent =
+"✅ গান সফলভাবে Upload হয়েছে।";
+
+
+$("title").value = "";
+
+$("artist").value = "";
+
+$("description").value = "";
+
+$("audio").value = "";
+
+$("cover").value = "";
+
+
+loadSongs();
+
+loadAdminSongs();
+
+
+}catch(error){
+
+console.error(error);
+
+$("uploadStatus").textContent =
+"❌ " + error.message;
+
+}
+
+
+$("uploadButton").disabled =
+false;
+
+};
+
+
+
+/* =========================
+   ADMIN SONG LIST
+========================= */
+
+async function loadAdminSongs(){
+
+if(!auth.currentUser){
+
+return;
+
+}
+
+
+const box =
+$("adminSongs");
+
+
+box.innerHTML =
+'<div class="muted">Loading...</div>';
+
+
+try{
+
+
+const songQuery =
+query(
+collection(db,"songs"),
+orderBy("createdAt","desc")
+);
+
+
+const snapshot =
+await getDocs(songQuery);
+
+
+box.innerHTML = "";
+
+
+if(snapshot.empty){
+
+box.innerHTML =
+'<div class="muted">এখনো কোনো গান নেই।</div>';
+
+return;
+
+}
+
+
+snapshot.forEach(
+documentSnapshot => {
+
+
+const song =
+documentSnapshot.data();
+
+
+const element =
+document.createElement("div");
+
+
+element.className =
+"adminSong";
+
+
+element.innerHTML = `
+
+<b>
+${safe(song.title)}
+</b>
+
+<div class="muted">
+
+${safe(song.artist)}
+•
+${safe(song.station)}
+
+•
+
+${
+song.published
+? "Published"
+: "Unpublished"
+}
+
+</div>
+
+<br>
+
+<button class="dark toggle">
+${
+song.published
+? "Unpublish"
+: "Publish"
+}
+</button>
+
+<button class="dark edit">
+Edit
+</button>
+
+<button class="danger delete">
+Delete
+</button>
+
+`;
+
+
+element
+.querySelector(".toggle")
+.onclick =
+async () => {
+
+await updateDoc(
+
+doc(
+db,
+"songs",
+documentSnapshot.id
+),
+
+{
+published:
+!song.published
+}
+
+);
+
+loadSongs();
+
+loadAdminSongs();
+
+};
+
+
+
+element
+.querySelector(".edit")
+.onclick =
+async () => {
+
+
+const newTitle =
+prompt(
+"Song title:",
+song.title
+);
+
+
+if(newTitle === null){
+
+return;
+
+}
+
+
+const newArtist =
+prompt(
+"Artist:",
+song.artist
+);
+
+
+if(newArtist === null){
+
+return;
+
+}
+
+
+await updateDoc(
+
+doc(
+db,
+"songs",
+documentSnapshot.id
+),
+
+{
+
+title:newTitle,
+
+artist:newArtist
+
+}
+
+);
+
+
+loadSongs();
+
+loadAdminSongs();
+
+};
+
+
+
+element
+.querySelector(".delete")
+.onclick =
+async () => {
+
+
+if(
+!confirm(
+"এই গানটি Delete করবেন?"
+)
+){
+
+return;
+
+}
+
+
+await deleteDoc(
+
+doc(
+db,
+"songs",
+documentSnapshot.id
+)
+
+);
+
+
+if(song.audioPath){
+
+try{
+
+await deleteObject(
+ref(
+storage,
+song.audioPath
+)
+);
+
+}catch(error){}
+
+}
+
+
+if(song.coverPath){
+
+try{
+
+await deleteObject(
+ref(
+storage,
+song.coverPath
+)
+);
+
+}catch(error){}
+
+}
+
+
+loadSongs();
+
+loadAdminSongs();
+
+};
+
+
+box.appendChild(element);
+
+});
+
+
+}catch(error){
+
+console.error(error);
+
+box.innerHTML =
+'<div class="muted">' +
+safe(error.message) +
+'</div>';
+
+}
+
+}
+
+
+
+/* =========================
+   START
+========================= */
+
+loadSongs();
+
+</script>
+
+</body>
+</html>
