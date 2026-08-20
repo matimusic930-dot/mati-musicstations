@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>MATI — Music Stations</title>
+<title>MATI Music Stations</title>
 
 <style>
 *{
@@ -21,18 +21,18 @@ body{
 header{
   position:sticky;
   top:0;
-  z-index:20;
-  padding:15px 5%;
+  z-index:5;
   background:#11120f;
   border-bottom:1px solid #292b26;
+  padding:14px 5%;
   display:flex;
   justify-content:space-between;
   align-items:center;
 }
 
 .logo{
-  font-size:22px;
-  font-weight:bold;
+  font-weight:800;
+  font-size:21px;
 }
 
 .logo span{
@@ -41,74 +41,72 @@ header{
 
 nav{
   display:flex;
-  gap:15px;
+  gap:8px;
   align-items:center;
 }
 
 nav a{
   color:#ddd;
   text-decoration:none;
-  font-size:14px;
+  padding:10px;
 }
 
 button{
   border:0;
   border-radius:8px;
-  padding:10px 15px;
-  font-weight:bold;
+  padding:10px 14px;
+  font-weight:700;
   cursor:pointer;
 }
 
-.dark{
-  background:#25261f;
-  color:white;
-}
-
-.primary{
+.gold{
   background:#c9a66b;
   color:#111;
 }
 
-.danger{
+.dark{
+  background:#25261f;
+  color:#fff;
+}
+
+.red{
   background:#d9534f;
-  color:white;
+  color:#fff;
 }
 
 main{
-  max-width:1100px;
+  max-width:1050px;
   margin:auto;
-  padding:25px 5% 120px;
+  padding:25px 5% 110px;
 }
 
 .hero{
-  padding:50px 25px;
+  padding:40px 25px;
   border-radius:20px;
   background:linear-gradient(135deg,#181a14,#0b2117);
-  margin-bottom:30px;
 }
 
 .hero h1{
-  margin:0;
-  font-size:42px;
+  font-size:40px;
+  margin:0 0 8px;
 }
 
-.hero p{
-  color:#aaa;
+.muted{
+  color:#999;
 }
 
 .stations{
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(140px,1fr));
-  gap:12px;
+  grid-template-columns:repeat(auto-fit,minmax(130px,1fr));
+  gap:10px;
 }
 
 .station{
-  padding:20px;
+  padding:18px;
   text-align:center;
   background:#121310;
   border:1px solid #292b26;
   border-radius:14px;
-  cursor:pointer;
 }
 
 .station.active{
@@ -118,59 +116,52 @@ main{
 .songs{
   display:grid;
   gap:12px;
-  margin-top:15px;
 }
 
 .song{
   background:#121310;
   border:1px solid #292b26;
   border-radius:14px;
-  padding:14px;
+  padding:12px;
   display:grid;
-  grid-template-columns:75px 1fr auto;
-  gap:14px;
+  grid-template-columns:70px 1fr auto;
+  gap:13px;
   align-items:center;
 }
 
 .cover{
-  width:75px;
-  height:75px;
+  width:70px;
+  height:70px;
   object-fit:cover;
-  border-radius:10px;
+  border-radius:9px;
   background:#24251f;
 }
 
 .title{
-  font-size:17px;
-  font-weight:bold;
+  font-weight:800;
 }
 
 .artist{
-  color:#999;
+  color:#bbb;
   font-size:13px;
   margin-top:5px;
 }
 
 .desc{
-  color:#777;
+  color:#d8c7a0;
   font-size:12px;
   margin-top:5px;
 }
 
-.play{
-  background:#c9a66b;
-  color:#111;
-}
-
 .player{
   position:fixed;
+  bottom:0;
   left:0;
   right:0;
-  bottom:0;
-  z-index:30;
-  padding:8px 5%;
   background:#11120f;
   border-top:1px solid #333;
+  padding:8px 5%;
+  z-index:8;
 }
 
 .player audio{
@@ -181,21 +172,21 @@ main{
   display:none;
   position:fixed;
   inset:0;
-  z-index:50;
   background:#000b;
+  z-index:20;
   align-items:center;
   justify-content:center;
-  padding:20px;
+  padding:18px;
 }
 
 .box{
-  width:min(650px,100%);
-  max-height:90vh;
-  overflow:auto;
   background:#121310;
   border:1px solid #3a3b34;
   border-radius:16px;
   padding:20px;
+  width:min(650px,100%);
+  max-height:92vh;
+  overflow:auto;
 }
 
 .close{
@@ -206,8 +197,8 @@ input,
 select,
 textarea{
   width:100%;
-  padding:12px;
-  margin:7px 0 12px;
+  padding:11px;
+  margin:6px 0 12px;
   background:#090a09;
   color:#fff;
   border:1px solid #3a3b34;
@@ -222,23 +213,18 @@ label{
 .row{
   display:grid;
   grid-template-columns:1fr 1fr;
-  gap:15px;
+  gap:12px;
+}
+
+.adminitem{
+  padding:13px 0;
+  border-top:1px solid #292b26;
 }
 
 .status{
   color:#c9a66b;
   font-size:13px;
-  margin:10px 0;
-}
-
-.adminSong{
-  padding:15px 0;
-  border-top:1px solid #292b26;
-}
-
-.muted{
-  color:#999;
-  font-size:13px;
+  margin:8px 0;
 }
 
 @media(max-width:650px){
@@ -248,16 +234,16 @@ label{
   }
 
   .hero h1{
-    font-size:32px;
+    font-size:31px;
   }
 
   .song{
-    grid-template-columns:60px 1fr;
+    grid-template-columns:55px 1fr;
   }
 
   .cover{
-    width:60px;
-    height:60px;
+    width:55px;
+    height:55px;
   }
 
   .song .play{
@@ -280,11 +266,16 @@ MATI <span>Music Stations</span>
 </div>
 
 <nav>
-<a href="#home">Home</a>
-<a href="#stations">Stations</a>
-<a href="#songs">Songs</a>
 
-<button id="adminButton" class="dark">
+<a href="#songs">
+Songs
+</a>
+
+<button id="submitBtn" class="gold">
+🎵 Submit Your Song
+</button>
+
+<button id="adminBtn" class="dark">
 Admin
 </button>
 
@@ -293,54 +284,56 @@ Admin
 </header>
 
 
-<main id="home">
+<main>
 
 <section class="hero">
 
-<h1>🎵 MATI Music Stations</h1>
+<h1>
+🎵 MATI Music Stations
+</h1>
 
-<p>
-Made With Meaning — MATI-এর গান শুনুন, আবিষ্কার করুন এবং উপভোগ করুন।
+<p class="muted">
+গান শুনুন এবং আপনার গান MATI-তে জমা দিন।
 </p>
 
 </section>
 
 
-<h2 id="stations">
+<h2>
 📻 Stations
 </h2>
 
 <div class="stations">
 
-<div class="station active" data-station="ALL">
+<button class="station active" data-s="ALL">
 🔥
 <br>
-<b>All Songs</b>
-</div>
+All Songs
+</button>
 
-<div class="station" data-station="MATI Hits">
+<button class="station" data-s="MATI Hits">
 🔥
 <br>
-<b>MATI Hits</b>
-</div>
+MATI Hits
+</button>
 
-<div class="station" data-station="Love">
+<button class="station" data-s="Love">
 ❤️
 <br>
-<b>Love</b>
-</div>
+Love
+</button>
 
-<div class="station" data-station="Artist">
+<button class="station" data-s="Artist">
 🎤
 <br>
-<b>Artist</b>
-</div>
+Artist
+</button>
 
-<div class="station" data-station="Relax">
+<button class="station" data-s="Relax">
 🌙
 <br>
-<b>Relax</b>
-</div>
+Relax
+</button>
 
 </div>
 
@@ -349,10 +342,10 @@ Made With Meaning — MATI-এর গান শুনুন, আবিষ্ক�
 🎶 Songs
 </h2>
 
-<div id="songList" class="songs">
+<div id="songsList" class="songs">
 
 <div class="muted">
-গান লোড হচ্ছে...
+Loading...
 </div>
 
 </div>
@@ -368,23 +361,156 @@ Made With Meaning — MATI-এর গান শুনুন, আবিষ্ক�
 
 
 
+<!-- USER SONG SUBMISSION -->
+
+<div id="submitModal" class="modal">
+
+<div class="box">
+
+<button
+class="dark close"
+id="submitClose">
+✕
+</button>
+
+<h2>
+🎵 Submit Your Song
+</h2>
+
+<p class="muted">
+আপনার গান জমা দিন। Admin অনুমোদন না করা পর্যন্ত
+এটি Public হবে না।
+</p>
+
+
+<label>
+Song Title
+</label>
+
+<input
+id="stitle"
+placeholder="গানের নাম"
+>
+
+
+<label>
+Artist Name
+</label>
+
+<input
+id="sartist"
+placeholder="শিল্পীর নাম"
+>
+
+
+<label>
+Contact
+</label>
+
+<input
+id="scontact"
+placeholder="ফোন / ইমেইল"
+>
+
+
+<label>
+Genre
+</label>
+
+<select id="sgenre">
+
+<option>
+Pop
+</option>
+
+<option>
+Love
+</option>
+
+<option>
+Islamic
+</option>
+
+<option>
+Rock
+</option>
+
+<option>
+Folk
+</option>
+
+<option>
+Other
+</option>
+
+</select>
+
+
+<label>
+Cover Photo
+</label>
+
+<input
+id="scover"
+type="file"
+accept="image/*"
+>
+
+
+<label>
+Audio File
+</label>
+
+<input
+id="saudio"
+type="file"
+accept="audio/*"
+>
+
+
+<label>
+Description
+</label>
+
+<textarea
+id="sdesc"
+rows="4"
+placeholder="গান সম্পর্কে লিখুন">
+</textarea>
+
+
+<button
+id="sendSong"
+class="gold">
+📤 Submit Song
+</button>
+
+<div
+id="submitStatus"
+class="status">
+</div>
+
+</div>
+
+</div>
+
+
+
 <!-- ADMIN LOGIN -->
 
 <div id="loginModal" class="modal">
 
 <div class="box">
 
-<button class="dark close" id="closeLogin">
+<button
+class="dark close"
+id="loginClose">
 ✕
 </button>
 
 <h2>
-🔐 MATI Admin Login
+🔐 Admin Login
 </h2>
-
-<label>
-Admin Email
-</label>
 
 <input
 id="email"
@@ -392,21 +518,22 @@ type="email"
 placeholder="Admin email"
 >
 
-<label>
-Password
-</label>
-
 <input
-id="password"
+id="pass"
 type="password"
 placeholder="Password"
 >
 
-<button id="loginButton" class="primary">
+<button
+id="login"
+class="gold">
 Login
 </button>
 
-<div id="loginStatus" class="status"></div>
+<div
+id="loginStatus"
+class="status">
+</div>
 
 </div>
 
@@ -420,7 +547,9 @@ Login
 
 <div class="box">
 
-<button class="dark close" id="closeAdmin">
+<button
+class="dark close"
+id="adminClose">
 ✕
 </button>
 
@@ -428,13 +557,15 @@ Login
 🎛️ MATI Admin Panel
 </h2>
 
-<button id="logoutButton" class="dark">
+<button
+id="logout"
+class="dark">
 Logout
 </button>
 
 
 <h3>
-📤 Upload Song
+📤 Admin Upload
 </h3>
 
 
@@ -443,30 +574,24 @@ Logout
 <div>
 
 <label>
-Song Title
+Title
 </label>
 
-<input
-id="title"
-placeholder="গানের নাম"
->
+<input id="atitle">
 
 
 <label>
 Artist
 </label>
 
-<input
-id="artist"
-placeholder="শিল্পীর নাম"
->
+<input id="aartist">
 
 
 <label>
 Genre
 </label>
 
-<select id="genre">
+<select id="agenre">
 
 <option>Pop</option>
 <option>Love</option>
@@ -482,7 +607,7 @@ Genre
 Station
 </label>
 
-<select id="station">
+<select id="astation">
 
 <option>MATI Hits</option>
 <option>Love</option>
@@ -497,42 +622,25 @@ Station
 <div>
 
 <label>
-Cover Photo
+Cover
 </label>
 
 <input
-id="cover"
+id="acover"
 type="file"
 accept="image/*"
 >
 
 
 <label>
-Audio File
+Audio
 </label>
 
 <input
-id="audio"
+id="aaudio"
 type="file"
 accept="audio/*"
 >
-
-
-<label>
-Publish
-</label>
-
-<select id="published">
-
-<option value="true">
-Published
-</option>
-
-<option value="false">
-Unpublished
-</option>
-
-</select>
 
 
 <label>
@@ -540,28 +648,45 @@ Description
 </label>
 
 <textarea
-id="description"
-rows="5"
-placeholder="গানের তথ্য"
-></textarea>
+id="adesc"
+rows="4">
+</textarea>
 
 </div>
 
 </div>
 
 
-<button id="uploadButton" class="primary">
-📤 Upload & Save
+<button
+id="adminUpload"
+class="gold">
+Upload & Save
 </button>
 
-<div id="uploadStatus" class="status"></div>
+<div
+id="adminStatus"
+class="status">
+</div>
 
 
 <h3>
-🎵 Manage Songs
+📥 Pending Song Submissions
 </h3>
 
-<div id="adminSongs">
+<div id="pending">
+
+<div class="muted">
+Loading...
+</div>
+
+</div>
+
+
+<h3>
+🎵 Published / Managed Songs
+</h3>
+
+<div id="managed">
 
 <div class="muted">
 Loading...
@@ -588,7 +713,8 @@ import {
 getAuth,
 onAuthStateChanged,
 signInWithEmailAndPassword,
-signOut
+signOut,
+signInAnonymously
 }
 from
 "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
@@ -623,7 +749,7 @@ from
 
 
 /* =========================
-   MATI FIREBASE CONFIG
+   FIREBASE CONFIG
 ========================= */
 
 const firebaseConfig = {
@@ -654,7 +780,7 @@ measurementId:
 
 
 /* =========================
-   FIREBASE START
+   FIREBASE
 ========================= */
 
 const app =
@@ -670,37 +796,35 @@ const storage =
 getStorage(app);
 
 
-
 const $ =
 id =>
 document.getElementById(id);
 
 
+const show =
+id =>
+$(id).style.display = "flex";
 
-const player =
-$("player");
+
+const hide =
+id =>
+$(id).style.display = "none";
 
 
-
-function safe(value){
-
-return String(value ?? "")
+const esc =
+x =>
+String(x ?? "")
 .replace(
 /[&<>"']/g,
-
-m => ({
-
+m =>
+({
 "&":"&amp;",
 "<":"&lt;",
 ">":"&gt;",
 '"':"&quot;",
 "'":"&#039;"
-
 }[m])
-
 );
-
-}
 
 
 
@@ -708,367 +832,101 @@ m => ({
    MODALS
 ========================= */
 
-$("adminButton").onclick = () => {
+$("submitBtn").onclick =
+() =>
+show("submitModal");
 
-if(auth.currentUser){
 
-$("adminModal").style.display =
-"flex";
+$("submitClose").onclick =
+() =>
+hide("submitModal");
 
-loadAdminSongs();
+
+$("adminBtn").onclick =
+() => {
+
+if(
+auth.currentUser &&
+!auth.currentUser.isAnonymous
+){
+
+show("adminModal");
+
+loadAdmin();
 
 }else{
 
-$("loginModal").style.display =
-"flex";
+show("loginModal");
 
 }
 
 };
 
 
-$("closeLogin").onclick = () => {
-
-$("loginModal").style.display =
-"none";
-
-};
+$("loginClose").onclick =
+() =>
+hide("loginModal");
 
 
-$("closeAdmin").onclick = () => {
-
-$("adminModal").style.display =
-"none";
-
-};
+$("adminClose").onclick =
+() =>
+hide("adminModal");
 
 
 
 /* =========================
-   LOGIN
+   ANONYMOUS USER LOGIN
 ========================= */
 
-$("loginButton").onclick =
-async () => {
+async function ensureAnonymous(){
+
+if(
+!auth.currentUser
+){
 
 try{
 
-await signInWithEmailAndPassword(
-
-auth,
-
-$("email").value,
-
-$("password").value
-
-);
-
-
-$("loginStatus").textContent =
-"✅ Login successful";
-
-$("loginModal").style.display =
-"none";
-
-$("adminModal").style.display =
-"flex";
-
-loadAdminSongs();
-
+await signInAnonymously(auth);
 
 }catch(error){
 
-$("loginStatus").textContent =
-"❌ " + error.message;
+console.error(
+"Anonymous login error:",
+error
+);
 
 }
 
-};
-
-
-
-/* =========================
-   LOGOUT
-========================= */
-
-$("logoutButton").onclick =
-async () => {
-
-await signOut(auth);
-
-$("adminModal").style.display =
-"none";
-
-};
-
-
-
-/* =========================
-   AUTH CHECK
-========================= */
-
-onAuthStateChanged(
-auth,
-user => {
-
-if(user){
-
-loadAdminSongs();
+}
 
 }
 
-});
+
+ensureAnonymous();
 
 
 
 /* =========================
-   PUBLIC SONGS
+   FILE UPLOAD
 ========================= */
 
-async function loadSongs(
-selectedStation = "ALL"
+async function uploadFile(
+file,
+path,
+statusElement
 ){
 
-const list =
-$("songList");
-
-list.innerHTML =
-'<div class="muted">গান লোড হচ্ছে...</div>';
-
-
-try{
-
-const songQuery =
-query(
-collection(db,"songs"),
-orderBy("createdAt","desc")
-);
-
-
-const snapshot =
-await getDocs(songQuery);
-
-
-list.innerHTML = "";
-
-let total = 0;
-
-
-snapshot.forEach(
-documentSnapshot => {
-
-const song =
-documentSnapshot.data();
-
-
-if(song.published === false){
-
-return;
-
-}
-
-
-if(
-selectedStation !== "ALL" &&
-song.station !== selectedStation
-){
-
-return;
-
-}
-
-
-total++;
-
-
-const element =
-document.createElement("div");
-
-
-element.className =
-"song";
-
-
-element.innerHTML = `
-
-<img
-class="cover"
-src="${safe(song.coverUrl || "")}"
-alt="Cover"
->
-
-<div>
-
-<div class="title">
-${safe(song.title)}
-</div>
-
-<div class="artist">
-${safe(song.artist)}
-•
-${safe(song.genre || "Music")}
-•
-${safe(song.station || "")}
-</div>
-
-<div class="desc">
-${safe(song.description || "")}
-</div>
-
-</div>
-
-<button class="play">
-▶ Play
-</button>
-
-`;
-
-
-element
-.querySelector(".play")
-.onclick = () => {
-
-player.src =
-song.audioUrl;
-
-player.play();
-
-};
-
-
-list.appendChild(element);
-
-});
-
-
-
-if(total === 0){
-
-list.innerHTML =
-
-'<div class="muted">এই station-এ এখনো কোনো published গান নেই।</div>';
-
-}
-
-
-}catch(error){
-
-console.error(error);
-
-list.innerHTML =
-
-'<div class="muted">গান লোড করা যায়নি। Firebase Rules পরীক্ষা করুন।</div>';
-
-}
-
-}
-
-
-
-/* =========================
-   STATION FILTER
-========================= */
-
-document
-.querySelectorAll(".station")
-.forEach(
-station => {
-
-station.onclick = () => {
-
-document
-.querySelectorAll(".station")
-.forEach(
-item =>
-item.classList.remove("active")
-);
-
-station.classList.add("active");
-
-loadSongs(
-station.dataset.station
-);
-
-};
-
-});
-
-
-
-/* =========================
-   UPLOAD SONG
-========================= */
-
-$("uploadButton").onclick =
-async () => {
-
-
-const title =
-$("title").value.trim();
-
-
-const artist =
-$("artist").value.trim();
-
-
-const audioFile =
-$("audio").files[0];
-
-
-const coverFile =
-$("cover").files[0];
-
-
-if(
-!title ||
-!artist ||
-!audioFile
-){
-
-$("uploadStatus").textContent =
-"⚠️ Title, Artist এবং Audio file দিন।";
-
-return;
-
-}
-
-
-$("uploadButton").disabled =
-true;
-
-
-try{
-
-
-const uniqueName =
-Date.now() +
-"_" +
-Math.random()
-.toString(36)
-.substring(2);
-
-
-const audioReference =
-ref(
-storage,
-"songs/audio/" +
-uniqueName +
-"_" +
-audioFile.name
-);
-
-
-const audioUpload =
+const upload =
 uploadBytesResumable(
-audioReference,
-audioFile
+ref(storage,path),
+file
 );
 
 
 await new Promise(
 (resolve,reject) => {
 
-audioUpload.on(
+upload.on(
 
 "state_changed",
 
@@ -1081,8 +939,8 @@ snapshot.totalBytes *
 100
 );
 
-$("uploadStatus").textContent =
-"Audio Upload: " +
+statusElement.textContent =
+"Upload " +
 progress +
 "%";
 
@@ -1097,9 +955,88 @@ resolve
 });
 
 
+return getDownloadURL(
+upload.snapshot.ref
+);
+
+}
+
+
+
+/* =========================
+   USER SUBMIT SONG
+========================= */
+
+$("sendSong").onclick =
+async () => {
+
+const title =
+$("stitle").value.trim();
+
+const artist =
+$("sartist").value.trim();
+
+const audio =
+$("saudio").files[0];
+
+const cover =
+$("scover").files[0];
+
+
+if(
+!title ||
+!artist ||
+!audio
+){
+
+$("submitStatus").textContent =
+"⚠️ Title, Artist এবং Audio file দিন।";
+
+return;
+
+}
+
+
+if(
+!auth.currentUser
+){
+
+$("submitStatus").textContent =
+"⚠️ একটু অপেক্ষা করুন, তারপর আবার চেষ্টা করুন।";
+
+await ensureAnonymous();
+
+return;
+
+}
+
+
+$("sendSong").disabled =
+true;
+
+
+try{
+
+const id =
+Date.now() +
+"_" +
+Math.random()
+.toString(36)
+.slice(2);
+
+
+const audioPath =
+"submissions/audio/" +
+id +
+"_" +
+audio.name;
+
+
 const audioUrl =
-await getDownloadURL(
-audioUpload.snapshot.ref
+await uploadFile(
+audio,
+audioPath,
+$("submitStatus")
 );
 
 
@@ -1108,76 +1045,49 @@ let coverUrl = "";
 let coverPath = "";
 
 
-if(coverFile){
+if(cover){
 
 coverPath =
-"songs/covers/" +
-uniqueName +
+"submissions/covers/" +
+id +
 "_" +
-coverFile.name;
-
-
-const coverReference =
-ref(
-storage,
-coverPath
-);
-
-
-const coverUpload =
-uploadBytesResumable(
-coverReference,
-coverFile
-);
-
-
-await new Promise(
-(resolve,reject) => {
-
-coverUpload.on(
-"state_changed",
-()=>{},
-reject,
-resolve
-);
-
-});
+cover.name;
 
 
 coverUrl =
-await getDownloadURL(
-coverUpload.snapshot.ref
+await uploadFile(
+cover,
+coverPath,
+$("submitStatus")
 );
 
 }
 
 
 await addDoc(
-collection(db,"songs"),
+collection(db,"submissions"),
 {
 
 title:title,
 
 artist:artist,
 
-genre:$("genre").value,
+contact:
+$("scontact").value.trim(),
 
-station:$("station").value,
+genre:
+$("sgenre").value,
 
 description:
-$("description").value,
-
-coverUrl:coverUrl,
+$("sdesc").value.trim(),
 
 audioUrl:audioUrl,
 
-audioPath:
-audioUpload.snapshot.ref.fullPath,
+coverUrl:coverUrl,
+
+audioPath:audioPath,
 
 coverPath:coverPath,
-
-published:
-$("published").value === "true",
 
 createdAt:
 serverTimestamp()
@@ -1187,37 +1097,35 @@ serverTimestamp()
 );
 
 
-$("uploadStatus").textContent =
-"✅ গান সফলভাবে Upload হয়েছে।";
+$("submitStatus").textContent =
+"✅ গান জমা হয়েছে। Admin অনুমোদনের পর প্রকাশ হবে।";
 
 
-$("title").value = "";
+$("stitle").value = "";
 
-$("artist").value = "";
+$("sartist").value = "";
 
-$("description").value = "";
+$("scontact").value = "";
 
-$("audio").value = "";
+$("sdesc").value = "";
 
-$("cover").value = "";
+$("saudio").value = "";
 
-
-loadSongs();
-
-loadAdminSongs();
+$("scover").value = "";
 
 
 }catch(error){
 
 console.error(error);
 
-$("uploadStatus").textContent =
-"❌ " + error.message;
+$("submitStatus").textContent =
+"❌ " +
+error.message;
 
 }
 
 
-$("uploadButton").disabled =
+$("sendSong").disabled =
 false;
 
 };
@@ -1225,21 +1133,15 @@ false;
 
 
 /* =========================
-   ADMIN SONG LIST
+   PUBLIC SONGS
 ========================= */
 
-async function loadAdminSongs(){
-
-if(!auth.currentUser){
-
-return;
-
-}
-
+async function loadSongs(
+station = "ALL"
+){
 
 const box =
-$("adminSongs");
-
+$("songsList");
 
 box.innerHTML =
 '<div class="muted">Loading...</div>';
@@ -1247,58 +1149,569 @@ box.innerHTML =
 
 try{
 
-
 const songQuery =
 query(
 collection(db,"songs"),
-orderBy("createdAt","desc")
+orderBy(
+"createdAt",
+"desc"
+)
 );
 
 
 const snapshot =
-await getDocs(songQuery);
+await getDocs(
+songQuery
+);
 
 
 box.innerHTML = "";
 
+let total = 0;
 
-if(snapshot.empty){
 
-box.innerHTML =
-'<div class="muted">এখনো কোনো গান নেই।</div>';
+snapshot.forEach(
+documentSnapshot => {
+
+const song =
+documentSnapshot.data();
+
+
+if(
+song.published === false
+){
 
 return;
 
 }
 
 
-snapshot.forEach(
-documentSnapshot => {
+if(
+station !== "ALL" &&
+song.station !== station
+){
 
+return;
+
+}
+
+
+total++;
+
+
+const element =
+document.createElement(
+"div"
+);
+
+
+element.className =
+"song";
+
+
+element.innerHTML = `
+
+<img
+class="cover"
+src="${esc(song.coverUrl || "")}"
+alt="Cover"
+>
+
+<div>
+
+<div class="title">
+${esc(song.title)}
+</div>
+
+<div class="artist">
+${esc(song.artist)}
+•
+${esc(song.genre || "")}
+•
+${esc(song.station || "")}
+</div>
+
+<div class="desc">
+${esc(song.description || "")}
+</div>
+
+</div>
+
+<button
+class="play gold">
+▶ Play
+</button>
+
+`;
+
+
+element
+.querySelector(".play")
+.onclick =
+() => {
+
+$("player").src =
+song.audioUrl;
+
+$("player").play();
+
+};
+
+
+box.appendChild(
+element
+);
+
+});
+
+
+if(
+total === 0
+){
+
+box.innerHTML =
+'<div class="muted">' +
+'এই station-এ কোনো published গান নেই।' +
+'</div>';
+
+}
+
+
+}catch(error){
+
+console.error(error);
+
+box.innerHTML =
+'<div class="muted">' +
+'গান load করা যায়নি। Firebase Rules পরীক্ষা করুন।' +
+'</div>';
+
+}
+
+}
+
+
+
+/* =========================
+   STATION FILTER
+========================= */
+
+document
+.querySelectorAll(".station")
+.forEach(
+button => {
+
+button.onclick =
+() => {
+
+document
+.querySelectorAll(".station")
+.forEach(
+item =>
+item.classList.remove(
+"active"
+)
+);
+
+button.classList.add(
+"active"
+);
+
+loadSongs(
+button.dataset.s
+);
+
+};
+
+});
+
+
+
+/* =========================
+   ADMIN LOGIN
+========================= */
+
+$("login").onclick =
+async () => {
+
+try{
+
+await signInWithEmailAndPassword(
+
+auth,
+
+$("email").value.trim(),
+
+$("pass").value
+
+);
+
+
+hide("loginModal");
+
+show("adminModal");
+
+loadAdmin();
+
+
+}catch(error){
+
+$("loginStatus").textContent =
+"❌ " +
+error.message;
+
+}
+
+};
+
+
+
+/* =========================
+   LOGOUT
+========================= */
+
+$("logout").onclick =
+async () => {
+
+await signOut(auth);
+
+hide("adminModal");
+
+await ensureAnonymous();
+
+};
+
+
+
+/* =========================
+   ADMIN PANEL
+========================= */
+
+async function loadAdmin(){
+
+if(
+!auth.currentUser ||
+auth.currentUser.isAnonymous
+){
+
+return;
+
+}
+
+
+const pending =
+$("pending");
+
+const managed =
+$("managed");
+
+
+pending.innerHTML =
+'<div class="muted">Loading...</div>';
+
+managed.innerHTML =
+'<div class="muted">Loading...</div>';
+
+
+try{
+
+/* PENDING */
+
+const pendingSnapshot =
+await getDocs(
+query(
+collection(db,"submissions"),
+orderBy(
+"createdAt",
+"desc"
+)
+)
+);
+
+
+pending.innerHTML = "";
+
+
+if(
+pendingSnapshot.empty
+){
+
+pending.innerHTML =
+'<div class="muted">' +
+'কোনো pending submission নেই।' +
+'</div>';
+
+}
+
+
+pendingSnapshot.forEach(
+documentSnapshot => {
 
 const song =
 documentSnapshot.data();
 
 
 const element =
-document.createElement("div");
+document.createElement(
+"div"
+);
 
 
 element.className =
-"adminSong";
+"adminitem";
 
 
 element.innerHTML = `
 
 <b>
-${safe(song.title)}
+${esc(song.title)}
 </b>
 
 <div class="muted">
 
-${safe(song.artist)}
+${esc(song.artist)}
+
 •
-${safe(song.station)}
+
+${esc(song.contact)}
+
+•
+
+${esc(song.genre)}
+
+</div>
+
+<div style="margin-top:8px">
+
+<button
+class="gold approve">
+✅ Approve & Publish
+</button>
+
+<button
+class="red reject">
+❌ Delete
+</button>
+
+</div>
+
+`;
+
+
+element
+.querySelector(".approve")
+.onclick =
+async () => {
+
+try{
+
+await addDoc(
+collection(db,"songs"),
+{
+
+title:
+song.title,
+
+artist:
+song.artist,
+
+genre:
+song.genre,
+
+station:
+song.genre === "Love"
+? "Love"
+: "Artist",
+
+description:
+song.description,
+
+coverUrl:
+song.coverUrl,
+
+audioUrl:
+song.audioUrl,
+
+audioPath:
+song.audioPath,
+
+coverPath:
+song.coverPath,
+
+published:true,
+
+createdAt:
+serverTimestamp()
+
+}
+);
+
+
+await deleteDoc(
+doc(
+db,
+"submissions",
+documentSnapshot.id
+)
+);
+
+
+loadAdmin();
+
+loadSongs();
+
+
+}catch(error){
+
+alert(
+error.message
+);
+
+}
+
+};
+
+
+element
+.querySelector(".reject")
+.onclick =
+async () => {
+
+if(
+!confirm(
+"এই submission delete করবেন?"
+)
+){
+
+return;
+
+}
+
+
+try{
+
+await deleteDoc(
+doc(
+db,
+"submissions",
+documentSnapshot.id
+)
+);
+
+
+if(
+song.audioPath
+){
+
+try{
+
+await deleteObject(
+ref(
+storage,
+song.audioPath
+)
+);
+
+}catch(error){}
+
+}
+
+
+if(
+song.coverPath
+){
+
+try{
+
+await deleteObject(
+ref(
+storage,
+song.coverPath
+)
+);
+
+}catch(error){}
+
+}
+
+
+loadAdmin();
+
+
+}catch(error){
+
+alert(
+error.message
+);
+
+}
+
+};
+
+
+pending.appendChild(
+element
+);
+
+});
+
+
+
+/* MANAGED SONGS */
+
+const managedSnapshot =
+await getDocs(
+query(
+collection(db,"songs"),
+orderBy(
+"createdAt",
+"desc"
+)
+)
+);
+
+
+managed.innerHTML = "";
+
+
+if(
+managedSnapshot.empty
+){
+
+managed.innerHTML =
+'<div class="muted">' +
+'কোনো গান নেই।' +
+'</div>';
+
+}
+
+
+managedSnapshot.forEach(
+documentSnapshot => {
+
+const song =
+documentSnapshot.data();
+
+
+const element =
+document.createElement(
+"div"
+);
+
+
+element.className =
+"adminitem";
+
+
+element.innerHTML = `
+
+<b>
+${esc(song.title)}
+</b>
+
+<div class="muted">
+
+${esc(song.artist)}
 
 •
 
@@ -1310,9 +1723,8 @@ song.published
 
 </div>
 
-<br>
-
-<button class="dark toggle">
+<button
+class="dark toggle">
 ${
 song.published
 ? "Unpublish"
@@ -1320,11 +1732,8 @@ song.published
 }
 </button>
 
-<button class="dark edit">
-Edit
-</button>
-
-<button class="danger delete">
+<button
+class="red del">
 Delete
 </button>
 
@@ -1345,86 +1754,26 @@ documentSnapshot.id
 ),
 
 {
+
 published:
 !song.published
+
 }
 
 );
 
-loadSongs();
 
-loadAdminSongs();
+loadAdmin();
+
+loadSongs();
 
 };
 
 
-
 element
-.querySelector(".edit")
+.querySelector(".del")
 .onclick =
 async () => {
-
-
-const newTitle =
-prompt(
-"Song title:",
-song.title
-);
-
-
-if(newTitle === null){
-
-return;
-
-}
-
-
-const newArtist =
-prompt(
-"Artist:",
-song.artist
-);
-
-
-if(newArtist === null){
-
-return;
-
-}
-
-
-await updateDoc(
-
-doc(
-db,
-"songs",
-documentSnapshot.id
-),
-
-{
-
-title:newTitle,
-
-artist:newArtist
-
-}
-
-);
-
-
-loadSongs();
-
-loadAdminSongs();
-
-};
-
-
-
-element
-.querySelector(".delete")
-.onclick =
-async () => {
-
 
 if(
 !confirm(
@@ -1448,7 +1797,9 @@ documentSnapshot.id
 );
 
 
-if(song.audioPath){
+if(
+song.audioPath
+){
 
 try{
 
@@ -1464,7 +1815,9 @@ song.audioPath
 }
 
 
-if(song.coverPath){
+if(
+song.coverPath
+){
 
 try{
 
@@ -1480,14 +1833,16 @@ song.coverPath
 }
 
 
-loadSongs();
+loadAdmin();
 
-loadAdminSongs();
+loadSongs();
 
 };
 
 
-box.appendChild(element);
+managed.appendChild(
+element
+);
 
 });
 
@@ -1496,9 +1851,9 @@ box.appendChild(element);
 
 console.error(error);
 
-box.innerHTML =
+pending.innerHTML =
 '<div class="muted">' +
-safe(error.message) +
+esc(error.message) +
 '</div>';
 
 }
@@ -1508,10 +1863,179 @@ safe(error.message) +
 
 
 /* =========================
+   ADMIN DIRECT UPLOAD
+========================= */
+
+$("adminUpload").onclick =
+async () => {
+
+const title =
+$("atitle").value.trim();
+
+const artist =
+$("aartist").value.trim();
+
+const audio =
+$("aaudio").files[0];
+
+const cover =
+$("acover").files[0];
+
+
+if(
+!title ||
+!artist ||
+!audio
+){
+
+$("adminStatus").textContent =
+"⚠️ Title, Artist এবং Audio দিন।";
+
+return;
+
+}
+
+
+try{
+
+const id =
+Date.now() +
+"_" +
+Math.random()
+.toString(36)
+.slice(2);
+
+
+const audioPath =
+"songs/audio/" +
+id +
+"_" +
+audio.name;
+
+
+const audioUrl =
+await uploadFile(
+audio,
+audioPath,
+$("adminStatus")
+);
+
+
+let coverUrl = "";
+
+let coverPath = "";
+
+
+if(cover){
+
+coverPath =
+"songs/covers/" +
+id +
+"_" +
+cover.name;
+
+
+coverUrl =
+await uploadFile(
+cover,
+coverPath,
+$("adminStatus")
+);
+
+}
+
+
+await addDoc(
+collection(db,"songs"),
+{
+
+title:title,
+
+artist:artist,
+
+genre:
+$("agenre").value,
+
+station:
+$("astation").value,
+
+description:
+$("adesc").value.trim(),
+
+coverUrl:coverUrl,
+
+audioUrl:audioUrl,
+
+audioPath:audioPath,
+
+coverPath:coverPath,
+
+published:true,
+
+createdAt:
+serverTimestamp()
+
+}
+
+);
+
+
+$("adminStatus").textContent =
+"✅ গান Published হয়েছে।";
+
+
+$("atitle").value = "";
+
+$("aartist").value = "";
+
+$("adesc").value = "";
+
+$("aaudio").value = "";
+
+$("acover").value = "";
+
+
+loadAdmin();
+
+loadSongs();
+
+
+}catch(error){
+
+console.error(error);
+
+$("adminStatus").textContent =
+"❌ " +
+error.message;
+
+}
+
+};
+
+
+/* =========================
    START
 ========================= */
 
 loadSongs();
+
+
+onAuthStateChanged(
+auth,
+user => {
+
+if(
+user &&
+!user.isAnonymous
+){
+
+console.log(
+"Admin logged in"
+);
+
+}
+
+});
 
 </script>
 
