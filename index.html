@@ -2,163 +2,317 @@
 <html lang="bn">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>MATI Music Stations</title>
 
 <style>
 *{box-sizing:border-box}
+
 body{
-margin:0;
-font-family:Arial,sans-serif;
-background:#080908;
-color:#fff
+  margin:0;
+  font-family:Arial,sans-serif;
+  background:#080908;
+  color:#fff;
 }
+
 header{
-position:sticky;
-top:0;
-z-index:10;
-background:#11120f;
-border-bottom:1px solid #292b26;
-padding:14px 4%;
-display:flex;
-align-items:center;
-justify-content:space-between;
-gap:10px
+  position:sticky;
+  top:0;
+  z-index:20;
+  background:#11130f;
+  border-bottom:1px solid #292d26;
+  padding:14px 4%;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:10px;
 }
-.logo{font-size:21px;font-weight:bold}
-.logo span{color:#d0aa68}
-nav{display:flex;gap:6px;flex-wrap:wrap}
+
+.logo{
+  font-size:21px;
+  font-weight:bold;
+}
+
+.logo span{
+  color:#d6ad62;
+}
+
+nav{
+  display:flex;
+  flex-wrap:wrap;
+  gap:6px;
+}
+
 button{
-border:0;
-border-radius:9px;
-padding:10px 13px;
-font-weight:bold;
-cursor:pointer
+  border:0;
+  border-radius:9px;
+  padding:10px 13px;
+  cursor:pointer;
+  font-weight:bold;
 }
-.gold{background:#d0aa68;color:#111}
-.dark{background:#272821;color:#fff}
-.red{background:#d9534f;color:#fff}
-main{max-width:1150px;margin:auto;padding:25px 4% 100px}
+
+.gold{
+  background:#d6ad62;
+  color:#111;
+}
+
+.dark{
+  background:#292d27;
+  color:#fff;
+}
+
+.red{
+  background:#d94d4d;
+  color:#fff;
+}
+
+main{
+  max-width:1150px;
+  margin:auto;
+  padding:25px 4% 100px;
+}
+
 .hero{
-background:linear-gradient(135deg,#181a14,#092318);
-padding:35px 25px;
-border-radius:20px;
-margin-bottom:25px
+  background:linear-gradient(135deg,#171a14,#09251a);
+  padding:35px 25px;
+  border-radius:20px;
+  margin-bottom:25px;
 }
-.hero h1{font-size:38px;margin:0 0 8px}
-.muted{color:#aaa}
+
+.hero h1{
+  margin:0 0 10px;
+  font-size:38px;
+}
+
+.muted{
+  color:#aaa;
+}
+
 .grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(170px,1fr));
-gap:12px
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(160px,1fr));
+  gap:12px;
 }
+
 .card{
-background:#121310;
-border:1px solid #292b26;
-border-radius:15px;
-padding:15px
+  background:#121410;
+  border:1px solid #292d27;
+  border-radius:15px;
+  padding:15px;
 }
-.station{text-align:center;min-height:90px}
-.active{border-color:#d0aa68}
+
+.station{
+  text-align:center;
+  min-height:90px;
+}
+
+.station.active{
+  border-color:#d6ad62;
+}
+
 .search{
-width:100%;
-padding:13px;
-border-radius:10px;
-border:1px solid #444;
-background:#090a09;
-color:#fff;
-margin:10px 0 18px
+  width:100%;
+  padding:13px;
+  border-radius:10px;
+  border:1px solid #444;
+  background:#090a09;
+  color:#fff;
+  margin:10px 0 18px;
 }
-.tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:15px}
-.list{display:grid;gap:12px}
+
+.tabs{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+  margin-bottom:15px;
+}
+
+.list{
+  display:grid;
+  gap:12px;
+}
+
 .item{
-background:#121310;
-border:1px solid #292b26;
-border-radius:14px;
-padding:12px;
-display:grid;
-grid-template-columns:70px 1fr auto;
-gap:12px;
-align-items:center
+  background:#121410;
+  border:1px solid #292d27;
+  border-radius:14px;
+  padding:12px;
+  display:grid;
+  grid-template-columns:70px 1fr auto;
+  gap:12px;
+  align-items:center;
 }
+
 .thumb{
-width:70px;
-height:70px;
-border-radius:9px;
-object-fit:cover;
-background:#222
+  width:70px;
+  height:70px;
+  border-radius:9px;
+  object-fit:cover;
+  background:#222;
 }
-.title{font-weight:bold}
-.small{font-size:13px;color:#aaa;margin-top:5px}
-.actions{display:flex;gap:6px;flex-wrap:wrap}
+
+.title{
+  font-weight:bold;
+}
+
+.small{
+  font-size:13px;
+  color:#aaa;
+  margin-top:5px;
+}
+
+.actions{
+  display:flex;
+  flex-wrap:wrap;
+  gap:6px;
+}
+
 .modal{
-display:none;
-position:fixed;
-inset:0;
-background:#000c;
-z-index:50;
-align-items:center;
-justify-content:center;
-padding:15px
+  display:none;
+  position:fixed;
+  inset:0;
+  background:#000c;
+  z-index:50;
+  align-items:center;
+  justify-content:center;
+  padding:15px;
 }
+
 .box{
-width:min(780px,100%);
-max-height:94vh;
-overflow:auto;
-background:#121310;
-border:1px solid #444;
-border-radius:16px;
-padding:20px
+  width:min(800px,100%);
+  max-height:94vh;
+  overflow:auto;
+  background:#121410;
+  border:1px solid #444;
+  border-radius:16px;
+  padding:20px;
 }
-.close{float:right}
-input,select,textarea{
-width:100%;
-padding:11px;
-margin:6px 0 12px;
-background:#090a09;
-border:1px solid #444;
-color:#fff;
-border-radius:8px
+
+.close{
+  float:right;
 }
-label{font-size:13px;color:#d0aa68}
+
+input,
+select,
+textarea{
+  width:100%;
+  padding:11px;
+  margin:6px 0 12px;
+  background:#090a09;
+  border:1px solid #444;
+  color:#fff;
+  border-radius:8px;
+}
+
+textarea{
+  resize:vertical;
+}
+
+label{
+  font-size:13px;
+  color:#d6ad62;
+}
+
 .row{
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:12px
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:12px;
 }
-.status{color:#d0aa68;margin:8px 0}
-.hidden{display:none!important}
-.stat{font-size:28px;font-weight:bold;color:#d0aa68}
+
+.status{
+  color:#d6ad62;
+  margin:10px 0;
+}
+
+.hidden{
+  display:none !important;
+}
+
+.stat{
+  font-size:28px;
+  font-weight:bold;
+  color:#d6ad62;
+}
+
 .adminitem{
-border-top:1px solid #292b26;
-padding:14px 0
+  border-top:1px solid #292d27;
+  padding:14px 0;
 }
+
 .pill{
-display:inline-block;
-background:#292b26;
-border-radius:20px;
-padding:4px 8px;
-font-size:11px
+  display:inline-block;
+  background:#292d27;
+  border-radius:20px;
+  padding:4px 8px;
+  font-size:11px;
 }
-.trending{color:#ffd16e}
+
+.trending{
+  color:#ffd16e;
+}
+
 .player{
-position:fixed;
-bottom:0;
-left:0;
-right:0;
-background:#11120f;
-border-top:1px solid #333;
-padding:8px 4%;
-z-index:20
+  position:fixed;
+  bottom:0;
+  left:0;
+  right:0;
+  background:#11130f;
+  border-top:1px solid #333;
+  padding:8px 4%;
+  z-index:30;
 }
-.player audio{width:100%}
-.player video{width:100%;max-height:55vh}
+
+.player audio{
+  width:100%;
+}
+
+.player video{
+  width:100%;
+  max-height:55vh;
+}
+
+.progress{
+  width:100%;
+  height:8px;
+  background:#292d27;
+  border-radius:10px;
+  overflow:hidden;
+  margin:10px 0;
+}
+
+.progressBar{
+  height:100%;
+  width:0%;
+  background:#d6ad62;
+}
+
 @media(max-width:700px){
-.hero h1{font-size:29px}
-.item{grid-template-columns:55px 1fr}
-.thumb{width:55px;height:55px}
-.item .actions{grid-column:2}
-.row{grid-template-columns:1fr}
+
+  header{
+    align-items:flex-start;
+    flex-direction:column;
+  }
+
+  .hero h1{
+    font-size:29px;
+  }
+
+  .item{
+    grid-template-columns:55px 1fr;
+  }
+
+  .thumb{
+    width:55px;
+    height:55px;
+  }
+
+  .item .actions{
+    grid-column:2;
+  }
+
+  .row{
+    grid-template-columns:1fr;
+  }
 }
 </style>
 </head>
@@ -166,26 +320,44 @@ z-index:20
 <body>
 
 <header>
-<div class="logo">MATI <span>Music Stations</span></div>
+
+<div class="logo">
+MATI <span>Music Stations</span>
+</div>
 
 <nav>
+
 <button class="dark" id="homeBtn">🏠 Home</button>
+
 <button class="gold" id="submitBtn">📤 Submit</button>
+
 <button class="dark" id="profileBtn">👤 Profile</button>
+
 <button class="dark" id="adminBtn">⚙️ Admin</button>
+
 <button class="dark hidden" id="logoutBtn">Logout</button>
+
 </nav>
+
 </header>
+
 
 <main>
 
 <section class="hero">
+
 <h1>🎵 MATI Music Stations</h1>
+
 <p class="muted">
-গান শুনুন, ভিডিও দেখুন, Artist খুঁজুন এবং আপনার নিজের গান জমা দিন।
+গান শুনুন, ভিডিও দেখুন এবং নিজের গান জমা দিন।
 </p>
-<div id="authInfo" class="status"></div>
+
+<div id="authInfo" class="status">
+Public Visitor
+</div>
+
 </section>
+
 
 <h2>📻 Stations</h2>
 
@@ -213,6 +385,7 @@ z-index:20
 
 </div>
 
+
 <h2>🔎 Search</h2>
 
 <input
@@ -221,24 +394,42 @@ class="search"
 placeholder="গান, Artist বা Genre লিখে খুঁজুন..."
 >
 
+
 <div class="tabs">
 
-<button class="gold" id="songsTab">🎵 Songs</button>
-<button class="dark" id="videosTab">🎬 Videos</button>
-<button class="dark" id="trendingTab">🔥 Trending</button>
-<button class="dark" id="artistsTab">🎤 Artists</button>
+<button class="gold" id="songsTab">
+🎵 Songs
+</button>
+
+<button class="dark" id="videosTab">
+🎬 Videos
+</button>
+
+<button class="dark" id="trendingTab">
+🔥 Trending
+</button>
+
+<button class="dark" id="artistsTab">
+🎤 Artists
+</button>
 
 </div>
 
+
 <div id="contentList" class="list">
-<div class="muted">Loading...</div>
+
+<div class="muted">
+Loading...
+</div>
+
 </div>
 
 </main>
 
+
 <div class="player">
 
-<audio id="audioPlayer" controls></audio>
+<audio id="audioPlayer" controls class="hidden"></audio>
 
 <video id="videoPlayer" controls class="hidden"></video>
 
@@ -251,17 +442,32 @@ placeholder="গান, Artist বা Genre লিখে খুঁজুন..."
 
 <div class="box">
 
-<button class="dark close" data-close="authModal">✕</button>
+<button class="dark close" data-close="authModal">
+✕
+</button>
 
-<h2 id="authTitle">👤 Login</h2>
+<h2 id="authTitle">
+👤 Login
+</h2>
+
 
 <div id="loginFields">
 
 <label>Email</label>
-<input id="loginEmail" type="email">
+
+<input
+id="loginEmail"
+type="email"
+placeholder="Email"
+>
 
 <label>Password</label>
-<input id="loginPass" type="password">
+
+<input
+id="loginPass"
+type="password"
+placeholder="Password"
+>
 
 <button class="gold" id="loginBtn">
 Login
@@ -277,13 +483,27 @@ Create Account
 <div id="registerFields" class="hidden">
 
 <label>Name</label>
-<input id="regName">
+
+<input
+id="regName"
+placeholder="Your name"
+>
 
 <label>Email</label>
-<input id="regEmail" type="email">
+
+<input
+id="regEmail"
+type="email"
+placeholder="Email"
+>
 
 <label>Password</label>
-<input id="regPass" type="password">
+
+<input
+id="regPass"
+type="password"
+placeholder="Minimum 6 characters"
+>
 
 <button class="gold" id="registerBtn">
 Register
@@ -295,76 +515,171 @@ Already have account
 
 </div>
 
+
 <div id="authStatus" class="status"></div>
 
 </div>
+
 </div>
 
 
-<!-- SUBMIT -->
+<!-- SUBMISSION -->
 
 <div id="submitModal" class="modal">
 
 <div class="box">
 
-<button class="dark close" data-close="submitModal">✕</button>
+<button class="dark close" data-close="submitModal">
+✕
+</button>
 
-<h2>📤 Submit Song / Video</h2>
+<h2>📤 Song / Video Submit</h2>
+
 
 <label>Content Type</label>
 
 <select id="subType">
 
-<option value="audio">🎵 Audio</option>
-<option value="video">🎬 Video</option>
+<option value="audio">
+🎵 Audio
+</option>
+
+<option value="video">
+🎬 Video
+</option>
 
 </select>
 
+
 <label>Title</label>
-<input id="subTitle">
+
+<input
+id="subTitle"
+placeholder="গানের নাম"
+>
+
 
 <label>Artist Name</label>
-<input id="subArtist">
+
+<input
+id="subArtist"
+placeholder="শিল্পীর নাম"
+>
+
+
+<div class="row">
+
+<div>
 
 <label>Genre</label>
 
 <select id="subGenre">
+
 <option>Pop</option>
 <option>Love</option>
 <option>Islamic</option>
 <option>Rock</option>
 <option>Folk</option>
 <option>Other</option>
+
 </select>
 
+</div>
+
+
+<div>
+
 <label>Contact</label>
-<input id="subContact">
+
+<input
+id="subContact"
+placeholder="Phone / Email"
+>
+
+</div>
+
+</div>
+
 
 <label>Lyrics</label>
-<textarea id="subLyrics" rows="5"></textarea>
+
+<textarea
+id="subLyrics"
+rows="5"
+placeholder="গানের Lyrics"
+></textarea>
+
 
 <label>YouTube Link</label>
-<input id="subYT">
+
+<input
+id="subYT"
+placeholder="https://youtube.com/..."
+>
+
 
 <label>Facebook Link</label>
-<input id="subFB">
+
+<input
+id="subFB"
+placeholder="https://facebook.com/..."
+>
+
 
 <label>Cover Image</label>
-<input id="subCover" type="file" accept="image/*">
 
-<label id="mediaLabel">Audio File</label>
-<input id="subMedia" type="file" accept="audio/*">
+<input
+id="subCover"
+type="file"
+accept="image/*"
+>
+
+
+<label id="mediaLabel">
+Audio File
+</label>
+
+<input
+id="subMedia"
+type="file"
+accept="audio/*"
+>
+
 
 <label>Description</label>
-<textarea id="subDesc" rows="3"></textarea>
 
-<button class="gold" id="submitContentBtn">
+<textarea
+id="subDesc"
+rows="3"
+placeholder="গান সম্পর্কে লিখুন"
+></textarea>
+
+
+<div class="progress">
+
+<div
+id="submitProgress"
+class="progressBar"
+></div>
+
+</div>
+
+
+<button
+class="gold"
+id="submitContentBtn"
+>
 📤 Submit
 </button>
 
-<div id="submitStatus" class="status"></div>
+
+<div
+id="submitStatus"
+class="status"
+></div>
 
 </div>
+
 </div>
 
 
@@ -374,13 +689,16 @@ Already have account
 
 <div class="box">
 
-<button class="dark close" data-close="profileModal">✕</button>
+<button class="dark close" data-close="profileModal">
+✕
+</button>
 
 <h2>👤 My Profile</h2>
 
 <div id="profileArea"></div>
 
 </div>
+
 </div>
 
 
@@ -390,11 +708,14 @@ Already have account
 
 <div class="box">
 
-<button class="dark close" data-close="artistModal">✕</button>
+<button class="dark close" data-close="artistModal">
+✕
+</button>
 
 <div id="artistArea"></div>
 
 </div>
+
 </div>
 
 
@@ -404,71 +725,154 @@ Already have account
 
 <div class="box">
 
-<button class="dark close" data-close="adminModal">✕</button>
+<button class="dark close" data-close="adminModal">
+✕
+</button>
+
 
 <h2>⚙️ MATI Admin Dashboard</h2>
 
+
 <div id="adminStats" class="grid"></div>
 
+
 <h3>📤 Admin Upload</h3>
+
 
 <label>Type</label>
 
 <select id="aType">
-<option value="audio">🎵 Audio</option>
-<option value="video">🎬 Video</option>
+
+<option value="audio">
+🎵 Audio
+</option>
+
+<option value="video">
+🎬 Video
+</option>
+
 </select>
 
+
 <label>Title</label>
-<input id="aTitle">
+
+<input
+id="aTitle"
+placeholder="Title"
+>
+
 
 <label>Artist</label>
-<input id="aArtist">
+
+<input
+id="aArtist"
+placeholder="Artist"
+>
+
+
+<div class="row">
+
+<div>
 
 <label>Genre</label>
 
 <select id="aGenre">
+
 <option>Pop</option>
 <option>Love</option>
 <option>Islamic</option>
 <option>Rock</option>
 <option>Folk</option>
 <option>Other</option>
+
 </select>
+
+</div>
+
+
+<div>
 
 <label>Station</label>
 
 <select id="aStation">
+
 <option>MATI Hits</option>
 <option>Love</option>
 <option>Islamic</option>
 <option>Relax</option>
+
 </select>
 
-<label>Cover</label>
-<input id="aCover" type="file" accept="image/*">
+</div>
+
+</div>
+
+
+<label>Cover Image</label>
+
+<input
+id="aCover"
+type="file"
+accept="image/*"
+>
+
 
 <label>Audio / Video</label>
-<input id="aMedia" type="file" accept="audio/*,video/*">
+
+<input
+id="aMedia"
+type="file"
+accept="audio/*,video/*"
+>
+
 
 <label>Description</label>
-<textarea id="aDesc"></textarea>
 
-<button class="gold" id="adminUpload">
+<textarea
+id="aDesc"
+rows="3"
+></textarea>
+
+
+<div class="progress">
+
+<div
+id="adminProgress"
+class="progressBar"
+></div>
+
+</div>
+
+
+<button
+class="gold"
+id="adminUpload"
+>
 Upload & Publish
 </button>
 
-<div id="adminStatus" class="status"></div>
 
-<h3>⏳ Pending Submissions</h3>
+<div
+id="adminStatus"
+class="status"
+></div>
+
+
+<h3>
+⏳ Pending Submissions
+</h3>
 
 <div id="pendingList"></div>
 
-<h3>🎵 Published Content</h3>
+
+<h3>
+🎵 Published Content
+</h3>
 
 <div id="managedList"></div>
 
 </div>
+
 </div>
 
 
@@ -480,6 +884,7 @@ initializeApp
 from
 "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
 
+
 import {
 getAuth,
 onAuthStateChanged,
@@ -490,6 +895,7 @@ updateProfile
 }
 from
 "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+
 
 import {
 getFirestore,
@@ -508,9 +914,11 @@ from
 "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
 
-/* FIREBASE */
+/* =========================
+   FIREBASE
+========================= */
 
-const firebaseConfig={
+const firebaseConfig = {
 
 apiKey:
 "AIzaSyB3lpzDsg3vt8q3M9_WTQDhulr8Zog7EgE",
@@ -535,264 +943,175 @@ measurementId:
 
 };
 
-const app=initializeApp(firebaseConfig);
 
-const auth=getAuth(app);
-
-const db=getFirestore(app);
+const app =
+initializeApp(firebaseConfig);
 
 
-/* CLOUDINARY */
-
-const CLOUD_NAME="rfqua0ll";
-
-const UPLOAD_PRESET="mati_music_upload";
-
-const CLOUD_URL=
-`https://api.cloudinary.com/v1_1/${CLOUD_NAME}/auto/upload`;
+const auth =
+getAuth(app);
 
 
-/* ADMIN */
-
-const ADMIN="matimusic930@gmail.com";
-
-
-const $=id=>document.getElementById(id);
-
-const show=id=>$(id).style.display="flex";
-
-const hide=id=>$(id).style.display="none";
+const db =
+getFirestore(app);
 
 
-let currentType="audio";
+/* =========================
+   CLOUDINARY
+========================= */
 
-let currentStation="ALL";
+const CLOUD_NAME =
+"rfqua0ll";
 
-let cache=[];
+const UPLOAD_PRESET =
+"mati_music_upload";
 
 
-/* CLOSE */
+const ADMIN_EMAIL =
+"matimusic930@gmail.com";
+
+
+/* =========================
+   HELPERS
+========================= */
+
+const $ =
+id => document.getElementById(id);
+
+
+function show(id){
+
+$(id).style.display = "flex";
+
+}
+
+
+function hide(id){
+
+$(id).style.display = "none";
+
+}
+
+
+function escapeHTML(value){
+
+return String(value || "")
+.replace(/&/g,"&amp;")
+.replace(/</g,"&lt;")
+.replace(/>/g,"&gt;")
+.replace(/"/g,"&quot;")
+.replace(/'/g,"&#039;");
+
+}
+
+
+/* =========================
+   CLOSE MODALS
+========================= */
 
 document
 .querySelectorAll("[data-close]")
-.forEach(btn=>{
-btn.onclick=()=>{
-hide(btn.dataset.close);
-};
-});
+.forEach(button => {
 
+button.onclick = () => {
 
-/* AUTH */
-
-$("registerSwitch").onclick=()=>{
-
-$("loginFields").classList.add("hidden");
-
-$("registerFields").classList.remove("hidden");
-
-$("authTitle").textContent="👤 Create Account";
+hide(button.dataset.close);
 
 };
-
-
-$("loginSwitch").onclick=()=>{
-
-$("registerFields").classList.add("hidden");
-
-$("loginFields").classList.remove("hidden");
-
-$("authTitle").textContent="👤 Login";
-
-};
-
-
-/* REGISTER */
-
-$("registerBtn").onclick=async()=>{
-
-try{
-
-const name=$("regName").value.trim();
-
-const email=$("regEmail").value.trim();
-
-const password=$("regPass").value;
-
-if(!name||!email||password.length<6){
-
-throw new Error(
-"Name, Email এবং কমপক্ষে ৬ অক্ষরের Password দিন।"
-);
-
-}
-
-const result=
-await createUserWithEmailAndPassword(
-auth,
-email,
-password
-);
-
-await updateProfile(
-result.user,
-{
-displayName:name
-}
-);
-
-await setDoc(
-doc(db,"profiles",result.user.uid),
-{
-uid:result.user.uid,
-name:name,
-email:email,
-bio:"",
-youtube:"",
-facebook:"",
-createdAt:serverTimestamp()
-}
-);
-
-hide("authModal");
-
-}catch(e){
-
-$("authStatus").textContent="❌ "+e.message;
-
-}
-
-};
-
-
-/* LOGIN */
-
-$("loginBtn").onclick=async()=>{
-
-try{
-
-await signInWithEmailAndPassword(
-auth,
-$("loginEmail").value.trim(),
-$("loginPass").value
-);
-
-hide("authModal");
-
-}catch(e){
-
-$("authStatus").textContent="❌ "+e.message;
-
-}
-
-};
-
-
-/* AUTH STATE */
-
-onAuthStateChanged(auth,user=>{
-
-$("logoutBtn")
-.classList
-.toggle("hidden",!user);
-
-$("authInfo").textContent=
-user
-?
-`Logged in: ${user.displayName||user.email}`
-:
-"Public Visitor";
-
-loadPublic();
 
 });
 
 
-/* LOGOUT */
+/* =========================
+   CLOUDINARY UPLOAD
+========================= */
 
-$("logoutBtn").onclick=
-()=>signOut(auth);
-
-
-/* PROFILE */
-
-$("profileBtn").onclick=()=>{
-
-if(auth.currentUser){
-
-show("profileModal");
-
-loadProfile();
-
-}else{
-
-show("authModal");
-
-}
-
-};
-
-
-/* SUBMIT */
-
-$("submitBtn").onclick=()=>{
-
-if(auth.currentUser){
-
-show("submitModal");
-
-}else{
-
-show("authModal");
-
-}
-
-};
-
-
-/* ADMIN */
-
-$("adminBtn").onclick=()=>{
+function cloudinaryEndpoint(file){
 
 if(
-auth.currentUser &&
-auth.currentUser.email.toLowerCase()===ADMIN
+file.type &&
+file.type.startsWith("image/")
 ){
 
-show("adminModal");
-
-loadAdmin();
-
-}else{
-
-show("authModal");
+return
+`https://api.cloudinary.com/v1_1/${CLOUD_NAME}/image/upload`;
 
 }
 
-};
+return
+`https://api.cloudinary.com/v1_1/${CLOUD_NAME}/video/upload`;
+
+}
 
 
-/* CLOUDINARY UPLOAD */
+async function uploadToCloudinary(
+file,
+statusElement,
+progressElement
+){
 
-async function cloudUpload(file,status){
+if(!file){
 
-status.textContent="☁️ Upload হচ্ছে...";
+throw new Error("File পাওয়া যায়নি।");
 
-const form=new FormData();
+}
 
-form.append("file",file);
 
-form.append("upload_preset",UPLOAD_PRESET);
+statusElement.textContent =
+"☁️ Cloudinary-তে Upload হচ্ছে...";
 
-const response=
+
+if(progressElement){
+
+progressElement.style.width =
+"10%";
+
+}
+
+
+const formData =
+new FormData();
+
+
+formData.append(
+"file",
+file
+);
+
+
+formData.append(
+"upload_preset",
+UPLOAD_PRESET
+);
+
+
+const endpoint =
+cloudinaryEndpoint(file);
+
+
+try{
+
+const response =
 await fetch(
-CLOUD_URL,
+endpoint,
 {
 method:"POST",
-body:form
+body:formData
 }
 );
 
-const data=await response.json();
+
+if(progressElement){
+
+progressElement.style.width =
+"70%";
+
+}
+
+
+const data =
+await response.json();
+
 
 if(!response.ok){
 
@@ -803,29 +1122,404 @@ data.error?.message ||
 
 }
 
-status.textContent="✅ Upload complete";
 
-return data.secure_url;
+if(!data.secure_url){
+
+throw new Error(
+"Cloudinary URL পাওয়া যায়নি।"
+);
 
 }
 
 
-/* TYPE CHANGE */
+if(progressElement){
 
-$("subType").onchange=()=>{
+progressElement.style.width =
+"100%";
 
-const video=
-$("subType").value==="video";
+}
 
-$("mediaLabel").textContent=
-video
+
+statusElement.textContent =
+"✅ File Upload Complete";
+
+
+return data.secure_url;
+
+
+}catch(error){
+
+if(progressElement){
+
+progressElement.style.width =
+"0%";
+
+}
+
+
+console.error(
+"Cloudinary error:",
+error
+);
+
+
+throw new Error(
+"Cloudinary: " +
+error.message
+);
+
+}
+
+}
+
+
+/* =========================
+   AUTH
+========================= */
+
+$("registerSwitch").onclick =
+() => {
+
+$("loginFields")
+.classList
+.add("hidden");
+
+$("registerFields")
+.classList
+.remove("hidden");
+
+$("authTitle")
+.textContent =
+"👤 Create Account";
+
+};
+
+
+$("loginSwitch").onclick =
+() => {
+
+$("registerFields")
+.classList
+.add("hidden");
+
+$("loginFields")
+.classList
+.remove("hidden");
+
+$("authTitle")
+.textContent =
+"👤 Login";
+
+};
+
+
+/* REGISTER */
+
+$("registerBtn").onclick =
+async () => {
+
+try{
+
+const name =
+$("regName")
+.value
+.trim();
+
+const email =
+$("regEmail")
+.value
+.trim();
+
+const password =
+$("regPass")
+.value;
+
+
+if(!name){
+
+throw new Error(
+"নাম দিন।"
+);
+
+}
+
+
+if(!email){
+
+throw new Error(
+"Email দিন।"
+);
+
+}
+
+
+if(password.length < 6){
+
+throw new Error(
+"Password কমপক্ষে ৬ অক্ষরের হতে হবে।"
+);
+
+}
+
+
+const result =
+await createUserWithEmailAndPassword(
+auth,
+email,
+password
+);
+
+
+await updateProfile(
+result.user,
+{
+displayName:name
+}
+);
+
+
+await setDoc(
+doc(
+db,
+"profiles",
+result.user.uid
+),
+{
+
+uid:
+result.user.uid,
+
+name:name,
+
+email:email,
+
+bio:"",
+
+youtube:"",
+
+facebook:"",
+
+createdAt:
+serverTimestamp()
+
+}
+);
+
+
+$("authStatus")
+.textContent =
+"✅ Account তৈরি হয়েছে।";
+
+
+setTimeout(
+() => hide("authModal"),
+800
+);
+
+
+}catch(error){
+
+$("authStatus")
+.textContent =
+"❌ " + error.message;
+
+}
+
+};
+
+
+/* LOGIN */
+
+$("loginBtn").onclick =
+async () => {
+
+try{
+
+const email =
+$("loginEmail")
+.value
+.trim();
+
+const password =
+$("loginPass")
+.value;
+
+
+await signInWithEmailAndPassword(
+auth,
+email,
+password
+);
+
+
+$("authStatus")
+.textContent =
+"✅ Login successful";
+
+
+setTimeout(
+() => hide("authModal"),
+500
+);
+
+
+}catch(error){
+
+$("authStatus")
+.textContent =
+"❌ " + error.message;
+
+}
+
+};
+
+
+/* LOGOUT */
+
+$("logoutBtn").onclick =
+async () => {
+
+await signOut(auth);
+
+};
+
+
+/* AUTH STATE */
+
+onAuthStateChanged(
+auth,
+user => {
+
+if(user){
+
+$("logoutBtn")
+.classList
+.remove("hidden");
+
+$("authInfo")
+.textContent =
+"Logged in: " +
+(user.displayName || user.email);
+
+}else{
+
+$("logoutBtn")
+.classList
+.add("hidden");
+
+$("authInfo")
+.textContent =
+"Public Visitor";
+
+}
+
+loadPublic();
+
+}
+);
+
+
+/* =========================
+   SUBMIT OPEN
+========================= */
+
+$("submitBtn").onclick =
+() => {
+
+if(!auth.currentUser){
+
+show("authModal");
+
+return;
+
+}
+
+show("submitModal");
+
+};
+
+
+/* =========================
+   PROFILE OPEN
+========================= */
+
+$("profileBtn").onclick =
+() => {
+
+if(!auth.currentUser){
+
+show("authModal");
+
+return;
+
+}
+
+show("profileModal");
+
+loadProfile();
+
+};
+
+
+/* =========================
+   ADMIN OPEN
+========================= */
+
+$("adminBtn").onclick =
+() => {
+
+if(!auth.currentUser){
+
+show("authModal");
+
+return;
+
+}
+
+
+if(
+auth.currentUser.email.toLowerCase()
+!== ADMIN_EMAIL.toLowerCase()
+){
+
+alert(
+"এই Dashboard শুধু Admin-এর জন্য।"
+);
+
+return;
+
+}
+
+
+show("adminModal");
+
+loadAdmin();
+
+};
+
+
+/* =========================
+   TYPE CHANGE
+========================= */
+
+$("subType").onchange =
+() => {
+
+const isVideo =
+$("subType").value === "video";
+
+
+$("mediaLabel")
+.textContent =
+isVideo
 ?
 "Video File"
 :
 "Audio File";
 
-$("subMedia").accept=
-video
+
+$("subMedia").accept =
+isVideo
 ?
 "video/*"
 :
@@ -834,9 +1528,12 @@ video
 };
 
 
-/* USER SUBMIT */
+/* =========================
+   USER SUBMIT
+========================= */
 
-$("submitContentBtn").onclick=async()=>{
+$("submitContentBtn").onclick =
+async () => {
 
 if(!auth.currentUser){
 
@@ -846,52 +1543,90 @@ return;
 
 }
 
-const type=$("subType").value;
 
-const title=$("subTitle").value.trim();
+const type =
+$("subType").value;
 
-const artist=$("subArtist").value.trim();
+const title =
+$("subTitle").value.trim();
 
-const media=$("subMedia").files[0];
+const artist =
+$("subArtist").value.trim();
 
-const cover=$("subCover").files[0];
+const mediaFile =
+$("subMedia").files[0];
 
-if(!title||!artist||!media){
+const coverFile =
+$("subCover").files[0];
 
-$("submitStatus").textContent=
-"⚠️ Title, Artist এবং Audio/Video file দিন।";
+
+if(!title){
+
+$("submitStatus").textContent =
+"⚠️ Title দিন।";
 
 return;
 
 }
 
+
+if(!artist){
+
+$("submitStatus").textContent =
+"⚠️ Artist name দিন।";
+
+return;
+
+}
+
+
+if(!mediaFile){
+
+$("submitStatus").textContent =
+"⚠️ Audio/Video file নির্বাচন করুন।";
+
+return;
+
+}
+
+
 try{
 
-const mediaUrl=
-await cloudUpload(
-media,
-$("submitStatus")
+const mediaUrl =
+await uploadToCloudinary(
+mediaFile,
+$("submitStatus"),
+$("submitProgress")
 );
 
-let coverUrl="";
 
-if(cover){
+let coverUrl = "";
 
-coverUrl=
-await cloudUpload(
-cover,
-$("submitStatus")
+
+if(coverFile){
+
+coverUrl =
+await uploadToCloudinary(
+coverFile,
+$("submitStatus"),
+$("submitProgress")
 );
 
 }
 
+
 await addDoc(
-collection(db,"submissions"),
+collection(
+db,
+"submissions"
+),
 {
 
-uid:auth.currentUser.uid,
+uid:
+auth.currentUser.uid,
 
-email:auth.currentUser.email,
+email:
+auth.currentUser.email,
 
 type:type,
 
@@ -899,17 +1634,23 @@ title:title,
 
 artist:artist,
 
-genre:$("subGenre").value,
+genre:
+$("subGenre").value,
 
-contact:$("subContact").value,
+contact:
+$("subContact").value.trim(),
 
-lyrics:$("subLyrics").value,
+lyrics:
+$("subLyrics").value,
 
-youtube:$("subYT").value,
+youtube:
+$("subYT").value.trim(),
 
-facebook:$("subFB").value,
+facebook:
+$("subFB").value.trim(),
 
-description:$("subDesc").value,
+description:
+$("subDesc").value,
 
 mediaUrl:mediaUrl,
 
@@ -917,191 +1658,288 @@ coverUrl:coverUrl,
 
 status:"Pending",
 
-createdAt:serverTimestamp()
+createdAt:
+serverTimestamp()
 
 }
 );
 
-$("submitStatus").textContent=
-"✅ সফল! Admin approve করলে গান/ভিডিও প্রকাশ হবে।";
 
-}catch(e){
+$("submitStatus").textContent =
+"✅ Submit সফল হয়েছে! Admin approve করলে প্রকাশ হবে।";
 
-$("submitStatus").textContent=
-"❌ "+e.message;
+
+$("subTitle").value = "";
+$("subArtist").value = "";
+$("subContact").value = "";
+$("subLyrics").value = "";
+$("subYT").value = "";
+$("subFB").value = "";
+$("subDesc").value = "";
+$("subMedia").value = "";
+$("subCover").value = "";
+
+
+}catch(error){
+
+$("submitStatus").textContent =
+"❌ " + error.message;
 
 }
 
 };
 
 
-/* LOAD CONTENT */
+/* =========================
+   CONTENT LOAD
+========================= */
 
-async function getAllContent(){
+async function getContents(){
 
-const snap=
+const snapshot =
 await getDocs(
-collection(db,"contents")
+collection(
+db,
+"contents"
+)
 );
 
-return snap.docs.map(d=>({
-id:d.id,
-...d.data()
-}));
+
+return snapshot.docs.map(
+document => ({
+
+id:
+document.id,
+
+...document.data()
+
+})
+);
 
 }
 
 
-/* PUBLIC */
+/* =========================
+   PUBLIC
+========================= */
+
+let mode = "audio";
+
+let station = "ALL";
+
+let cached = [];
+
 
 async function loadPublic(){
 
-if(currentType==="artists"){
+if(mode === "artists"){
 
-loadArtists();
+await loadArtists();
 
 return;
 
 }
 
-let list=
-await getAllContent();
 
-if(currentType==="audio"){
+try{
 
-list=list.filter(x=>x.type==="audio");
+let data =
+await getContents();
+
+
+data =
+data.filter(
+item =>
+item.published === true
+);
+
+
+if(mode === "audio"){
+
+data =
+data.filter(
+item =>
+item.type === "audio"
+);
 
 }
 
-if(currentType==="videos"){
 
-list=list.filter(x=>x.type==="video");
+if(mode === "videos"){
 
-}
-
-list=list.filter(x=>x.published===true);
-
-cache=list;
-
-render(list);
+data =
+data.filter(
+item =>
+item.type === "video"
+);
 
 }
 
 
-/* RENDER */
+if(mode === "trending"){
 
-function render(list){
+data.sort(
+(a,b) =>
+(b.plays || 0)
+-
+(a.plays || 0)
+);
 
-const search=
-$("search").value.trim().toLowerCase();
+}
 
-let result=
-list.filter(x=>{
 
-const stationOK=
-currentStation==="ALL" ||
-x.station===currentStation;
+cached = data;
 
-const searchOK=
+renderContents(data);
+
+
+}catch(error){
+
+$("contentList").innerHTML =
+`
+<div class="card">
+❌ Content load error:
+<br>
+${escapeHTML(error.message)}
+</div>
+`;
+
+}
+
+}
+
+
+/* =========================
+   RENDER
+========================= */
+
+function renderContents(data){
+
+const search =
+$("search")
+.value
+.trim()
+.toLowerCase();
+
+
+let result =
+data.filter(item => {
+
+const stationOK =
+station === "ALL" ||
+item.station === station;
+
+
+const text =
+`${item.title || ""}
+${item.artist || ""}
+${item.genre || ""}`
+.toLowerCase();
+
+
+const searchOK =
 !search ||
-`${x.title} ${x.artist} ${x.genre}`
-.toLowerCase()
-.includes(search);
+text.includes(search);
 
-return stationOK&&searchOK;
+
+return stationOK && searchOK;
 
 });
 
 
-if(currentType==="trending"){
-
-result.sort(
-(a,b)=>
-(b.plays||0)-(a.plays||0)
-);
-
-}
-
-
 if(!result.length){
 
-$("contentList").innerHTML=
-`<div class="muted">
-কোনো Published Content নেই।
-</div>`;
+$("contentList").innerHTML =
+`
+<div class="card muted">
+এখন কোনো Published Content নেই।
+</div>
+`;
 
 return;
 
 }
 
 
-$("contentList").innerHTML="";
+$("contentList").innerHTML = "";
 
 
-result.forEach(x=>{
+result.forEach(item => {
 
-const item=
+const div =
 document.createElement("div");
 
-item.className="item";
 
-item.innerHTML=`
+div.className = "item";
+
+
+const cover =
+item.coverUrl ||
+"https://via.placeholder.com/150?text=MATI";
+
+
+div.innerHTML =
+`
 
 <img
 class="thumb"
-src="${x.coverUrl||""}"
-alt=""
+src="${cover}"
+alt="cover"
 >
+
 
 <div>
 
 <div class="title">
 
-${x.plays>=10
-?'<span class="trending">🔥 Trending</span>'
-:""}
+${
+(item.plays || 0) >= 10
+?
+'<span class="trending">🔥 Trending</span>'
+:
+''
+}
 
-${escapeHTML(x.title)}
+${escapeHTML(item.title)}
 
 </div>
+
 
 <div class="small">
 
-🎤 ${escapeHTML(x.artist||"Unknown")}
+🎤 ${escapeHTML(item.artist || "Unknown")}
 
 •
 
-${escapeHTML(x.genre||"")}
-
-•
-
-▶ ${x.plays||0}
-
-•
-
-❤️ ${x.likes||0}
+${escapeHTML(item.genre || "")}
 
 </div>
+
 
 <div class="small">
 
-${escapeHTML(x.description||"")}
+▶ ${item.plays || 0}
+
+•
+
+❤️ ${item.likes || 0}
 
 </div>
 
 </div>
+
 
 <div class="actions">
 
-<button class="gold playBtn">
-▶ ${x.type==="video"?"Watch":"Play"}
+<button class="gold playButton">
+▶ ${item.type === "video" ? "Watch" : "Play"}
 </button>
 
-<button class="dark likeBtn">
+<button class="dark likeButton">
 ❤️
 </button>
 
-<button class="dark favBtn">
+<button class="dark favoriteButton">
 ⭐
 </button>
 
@@ -1109,77 +1947,102 @@ ${escapeHTML(x.description||"")}
 
 `;
 
-item.querySelector(".playBtn")
-.onclick=()=>playContent(x);
 
-item.querySelector(".likeBtn")
-.onclick=()=>likeContent(x);
+div.querySelector(".playButton")
+.onclick =
+() => playContent(item);
 
-item.querySelector(".favBtn")
-.onclick=()=>favoriteContent(x);
 
-$("contentList").appendChild(item);
+div.querySelector(".likeButton")
+.onclick =
+() => likeContent(item);
+
+
+div.querySelector(".favoriteButton")
+.onclick =
+() => favoriteContent(item);
+
+
+$("contentList")
+.appendChild(div);
 
 });
 
 }
 
 
-/* ESCAPE */
+/* =========================
+   PLAY
+========================= */
 
-function escapeHTML(text){
+async function playContent(item){
 
-return String(text||"")
-.replace(/&/g,"&amp;")
-.replace(/</g,"&lt;")
-.replace(/>/g,"&gt;")
-.replace(/"/g,"&quot;")
-.replace(/'/g,"&#039;");
+$("audioPlayer")
+.classList
+.add("hidden");
 
-}
+$("videoPlayer")
+.classList
+.add("hidden");
 
 
-/* PLAY */
+if(item.type === "audio"){
 
-async function playContent(x){
+$("audioPlayer").src =
+item.mediaUrl;
 
-$("audioPlayer").classList.toggle(
-"hidden",
-x.type!=="audio"
-);
-
-$("videoPlayer").classList.toggle(
-"hidden",
-x.type!=="video"
-);
-
-if(x.type==="audio"){
-
-$("audioPlayer").src=x.mediaUrl;
+$("audioPlayer")
+.classList
+.remove("hidden");
 
 $("audioPlayer").play();
 
+
 }else{
 
-$("videoPlayer").src=x.mediaUrl;
+$("videoPlayer").src =
+item.mediaUrl;
+
+$("videoPlayer")
+.classList
+.remove("hidden");
 
 $("videoPlayer").play();
 
 }
 
+
+try{
+
 await updateDoc(
-doc(db,"contents",x.id),
+doc(
+db,
+"contents",
+item.id
+),
 {
-plays:increment(1)
+plays:
+increment(1)
 }
+);
+
+}catch(error){
+
+console.log(
+"Play count error:",
+error
 );
 
 }
 
+}
 
-/* LIKE */
 
-async function likeContent(x){
+/* =========================
+   LIKE
+========================= */
+
+async function likeContent(item){
 
 if(!auth.currentUser){
 
@@ -1189,54 +2052,99 @@ return;
 
 }
 
-const id=
-`${auth.currentUser.uid}_${x.id}`;
 
-const likeRef=
-doc(db,"likes",id);
+const likeId =
+auth.currentUser.uid +
+"_" +
+item.id;
 
-const old=
-await getDoc(likeRef);
+
+const reference =
+doc(
+db,
+"likes",
+likeId
+);
+
+
+const old =
+await getDoc(reference);
+
+
+try{
 
 if(old.exists()){
 
-await deleteDoc(likeRef);
+await deleteDoc(reference);
+
 
 await updateDoc(
-doc(db,"contents",x.id),
+doc(
+db,
+"contents",
+item.id
+),
 {
-likes:increment(-1)
+likes:
+increment(-1)
 }
 );
+
 
 }else{
 
 await setDoc(
-likeRef,
+reference,
 {
-uid:auth.currentUser.uid,
-contentId:x.id,
-createdAt:serverTimestamp()
+
+uid:
+auth.currentUser.uid,
+
+contentId:
+item.id,
+
+createdAt:
+serverTimestamp()
+
 }
 );
+
 
 await updateDoc(
-doc(db,"contents",x.id),
+doc(
+db,
+"contents",
+item.id
+),
 {
-likes:increment(1)
+likes:
+increment(1)
 }
 );
 
 }
 
-loadPublic();
+
+await loadPublic();
+
+
+}catch(error){
+
+alert(
+"Like error: " +
+error.message
+);
+
+}
 
 }
 
 
-/* FAVORITE */
+/* =========================
+   FAVORITE
+========================= */
 
-async function favoriteContent(x){
+async function favoriteContent(item){
 
 if(!auth.currentUser){
 
@@ -1246,102 +2154,140 @@ return;
 
 }
 
-const id=
-`${auth.currentUser.uid}_${x.id}`;
 
-const ref=
-doc(db,"favorites",id);
+const favoriteId =
+auth.currentUser.uid +
+"_" +
+item.id;
 
-const old=
-await getDoc(ref);
+
+const reference =
+doc(
+db,
+"favorites",
+favoriteId
+);
+
+
+const old =
+await getDoc(reference);
+
 
 if(old.exists()){
 
-await deleteDoc(ref);
+await deleteDoc(reference);
 
-alert("⭐ Favorite removed");
+alert(
+"⭐ Favorite removed"
+);
 
 }else{
 
 await setDoc(
-ref,
+reference,
 {
-uid:auth.currentUser.uid,
-contentId:x.id,
-createdAt:serverTimestamp()
+
+uid:
+auth.currentUser.uid,
+
+contentId:
+item.id,
+
+createdAt:
+serverTimestamp()
+
 }
 );
 
-alert("⭐ Favorite added");
-
-}
-
-}
-
-
-/* TABS */
-
-$("songsTab").onclick=()=>{
-
-currentType="audio";
-
-loadPublic();
-
-};
-
-$("videosTab").onclick=()=>{
-
-currentType="videos";
-
-loadPublic();
-
-};
-
-$("trendingTab").onclick=()=>{
-
-currentType="trending";
-
-loadPublic();
-
-};
-
-$("artistsTab").onclick=()=>{
-
-currentType="artists";
-
-loadPublic();
-
-};
-
-$("search").oninput=()=>{
-
-if(currentType!=="artists"){
-
-render(cache);
-
-}
-
-};
-
-
-/* STATIONS */
-
-document
-.querySelectorAll(".station")
-.forEach(btn=>{
-
-btn.onclick=()=>{
-
-document
-.querySelectorAll(".station")
-.forEach(x=>
-x.classList.remove("active")
+alert(
+"⭐ Favorite added"
 );
 
-btn.classList.add("active");
+}
 
-currentStation=
-btn.dataset.station;
+}
+
+
+/* =========================
+   TABS
+========================= */
+
+$("songsTab").onclick =
+() => {
+
+mode = "audio";
+
+loadPublic();
+
+};
+
+
+$("videosTab").onclick =
+() => {
+
+mode = "videos";
+
+loadPublic();
+
+};
+
+
+$("trendingTab").onclick =
+() => {
+
+mode = "trending";
+
+loadPublic();
+
+};
+
+
+$("artistsTab").onclick =
+() => {
+
+mode = "artists";
+
+loadPublic();
+
+};
+
+
+$("search").oninput =
+() => {
+
+if(mode !== "artists"){
+
+renderContents(cached);
+
+}
+
+};
+
+
+/* =========================
+   STATIONS
+========================= */
+
+document
+.querySelectorAll(".station")
+.forEach(button => {
+
+button.onclick =
+() => {
+
+document
+.querySelectorAll(".station")
+.forEach(item =>
+item.classList.remove("active")
+);
+
+
+button.classList.add("active");
+
+
+station =
+button.dataset.station;
+
 
 loadPublic();
 
@@ -1350,101 +2296,137 @@ loadPublic();
 });
 
 
-/* PROFILE */
+/* =========================
+   PROFILE
+========================= */
 
 async function loadProfile(){
 
-const user=auth.currentUser;
+const user =
+auth.currentUser;
+
 
 if(!user)return;
 
-const ref=
-await getDoc(
-doc(db,"profiles",user.uid)
+
+const profileRef =
+doc(
+db,
+"profiles",
+user.uid
 );
 
-const p=
-ref.exists()
+
+const profileSnap =
+await getDoc(profileRef);
+
+
+const profile =
+profileSnap.exists()
 ?
-ref.data()
+profileSnap.data()
 :
 {};
 
-const submissions=
+
+const submissionSnap =
 await getDocs(
-collection(db,"submissions")
+collection(
+db,
+"submissions"
+)
 );
 
-const mine=
-submissions.docs
-.map(d=>d.data())
-.filter(x=>x.uid===user.uid);
 
-$("profileArea").innerHTML=`
+const mine =
+submissionSnap.docs
+.map(d => d.data())
+.filter(
+item =>
+item.uid === user.uid
+);
+
+
+$("profileArea").innerHTML =
+`
 
 <div class="card">
 
 <h3>
-${escapeHTML(
-p.name||user.displayName||"User"
+👤 ${escapeHTML(
+profile.name ||
+user.displayName ||
+"User"
 )}
 </h3>
+
 
 <p>
 ${escapeHTML(user.email)}
 </p>
 
+
 <label>Bio</label>
 
 <textarea id="profileBio">
-${escapeHTML(p.bio||"")}
+${escapeHTML(profile.bio || "")}
 </textarea>
+
 
 <label>YouTube</label>
 
 <input
 id="profileYT"
-value="${escapeHTML(p.youtube||"")}"
+value="${escapeHTML(profile.youtube || "")}"
 >
+
 
 <label>Facebook</label>
 
 <input
 id="profileFB"
-value="${escapeHTML(p.facebook||"")}"
+value="${escapeHTML(profile.facebook || "")}"
 >
 
-<button class="gold" id="saveProfile">
+
+<button
+class="gold"
+id="saveProfile"
+>
 Save Profile
 </button>
 
 </div>
 
-<h3>📤 My Submissions</h3>
+
+<h3>
+📤 My Submissions
+</h3>
+
 
 ${
 mine.length
 ?
-mine.map(x=>`
+mine.map(item => `
 
 <div class="adminitem">
 
 <b>
-${escapeHTML(x.title)}
+${escapeHTML(item.title)}
 </b>
 
 <div class="small">
 
-${escapeHTML(x.artist)}
+🎤 ${escapeHTML(item.artist)}
 
 •
 
-${escapeHTML(x.type)}
+${escapeHTML(item.type)}
 
 •
 
 <span class="pill">
-${escapeHTML(x.status)}
+${escapeHTML(item.status)}
 </span>
 
 </div>
@@ -1453,203 +2435,341 @@ ${escapeHTML(x.status)}
 
 `).join("")
 :
-'<div class="muted">কোনো submission নেই।</div>'
+`
+<div class="muted">
+এখনো কোনো submission নেই।
+</div>
+`
 }
 
 `;
 
-$("saveProfile").onclick=async()=>{
+
+$("saveProfile").onclick =
+async () => {
 
 await updateDoc(
-doc(db,"profiles",user.uid),
+profileRef,
 {
-bio:$("profileBio").value,
-youtube:$("profileYT").value,
-facebook:$("profileFB").value
+
+bio:
+$("profileBio").value,
+
+youtube:
+$("profileYT").value,
+
+facebook:
+$("profileFB").value
+
 }
 );
 
-alert("✅ Profile Saved");
+
+alert(
+"✅ Profile saved"
+);
 
 };
 
 }
 
 
-/* ARTISTS */
+/* =========================
+   ARTISTS
+========================= */
 
 async function loadArtists(){
 
-const snap=
+const snapshot =
 await getDocs(
-collection(db,"profiles")
+collection(
+db,
+"profiles"
+)
 );
 
-const q=
-$("search").value.trim().toLowerCase();
 
-const artists=
-snap.docs
-.map(d=>d.data())
-.filter(x=>
-!q ||
-(x.name||"")
+const search =
+$("search")
+.value
+.trim()
+.toLowerCase();
+
+
+const artists =
+snapshot.docs
+.map(d => d.data())
+.filter(
+item =>
+!search ||
+(item.name || "")
 .toLowerCase()
-.includes(q)
+.includes(search)
 );
 
-$("contentList").innerHTML=
-artists.length
-?
-artists.map(x=>`
+
+if(!artists.length){
+
+$("contentList").innerHTML =
+`
+<div class="card muted">
+কোনো Artist পাওয়া যায়নি।
+</div>
+`;
+
+return;
+
+}
+
+
+$("contentList").innerHTML =
+artists.map(
+artist =>
+`
 
 <div class="card">
 
 <h3>
-🎤 ${escapeHTML(x.name||"Artist")}
+🎤 ${escapeHTML(
+artist.name || "Artist"
+)}
 </h3>
 
+
 <p class="muted">
-${escapeHTML(x.bio||"")}
+${escapeHTML(
+artist.bio || ""
+)}
 </p>
 
+
 <button
-class="gold artistBtn"
-data-name="${escapeHTML(x.name||"")}"
+class="gold artistButton"
+data-artist="${escapeHTML(
+artist.name || ""
+)}"
 >
 View Profile
 </button>
 
 </div>
 
-`).join("")
-:
-'<div class="muted">Artist পাওয়া যায়নি।</div>';
+`
+).join("");
+
 
 document
-.querySelectorAll(".artistBtn")
-.forEach(btn=>{
+.querySelectorAll(".artistButton")
+.forEach(button => {
 
-btn.onclick=
-()=>showArtist(btn.dataset.name);
+button.onclick =
+() =>
+showArtist(
+button.dataset.artist
+);
 
 });
 
 }
 
 
-/* ARTIST PROFILE */
+/* =========================
+   ARTIST PROFILE
+========================= */
 
 async function showArtist(name){
 
-const all=
-await getAllContent();
+const contents =
+await getContents();
 
-const works=
-all.filter(
-x=>
-x.published===true &&
-x.artist===name
+
+const works =
+contents.filter(
+item =>
+item.published === true &&
+item.artist === name
 );
 
-$("artistArea").innerHTML=`
 
-<h2>🎤 ${escapeHTML(name)}</h2>
+$("artistArea").innerHTML =
+`
 
-<h3>Published Works</h3>
+<h2>
+🎤 ${escapeHTML(name)}
+</h2>
+
+
+<h3>
+Published Songs & Videos
+</h3>
+
 
 ${
 works.length
 ?
-works.map(x=>`
+works.map(item => `
 
 <div class="adminitem">
 
 <b>
-${escapeHTML(x.title)}
+${escapeHTML(item.title)}
 </b>
 
 <div class="small">
-${escapeHTML(x.type)}
+
+${escapeHTML(item.type)}
+
 •
-▶ ${x.plays||0}
+
+▶ ${item.plays || 0}
+
 </div>
 
 </div>
 
 `).join("")
 :
-'<div class="muted">কোনো published work নেই।</div>'
+`
+<div class="muted">
+এই Artist-এর কোনো published content নেই।
+</div>
+`
 }
 
 `;
+
 
 show("artistModal");
 
 }
 
 
-/* ADMIN DASHBOARD */
+/* =========================
+   ADMIN
+========================= */
 
 async function loadAdmin(){
 
+if(!auth.currentUser){
+
+return;
+
+}
+
+
 if(
-!auth.currentUser ||
-auth.currentUser.email.toLowerCase()!==ADMIN
-)return;
+auth.currentUser.email.toLowerCase()
+!==
+ADMIN_EMAIL.toLowerCase()
+){
 
-const users=
+return;
+
+}
+
+
+try{
+
+const users =
 await getDocs(
-collection(db,"profiles")
+collection(
+db,
+"profiles"
+)
 );
 
-const contents=
-await getAllContent();
 
-const submissions=
+const contents =
+await getContents();
+
+
+const submissions =
 await getDocs(
-collection(db,"submissions")
+collection(
+db,
+"submissions"
+)
 );
 
-const pending=
-submissions.docs
-.filter(
-d=>d.data().status==="Pending"
+
+const pending =
+submissions.docs.filter(
+doc =>
+doc.data().status === "Pending"
 );
 
-$("adminStats").innerHTML=`
+
+$("adminStats").innerHTML =
+`
 
 <div class="card">
-<div class="stat">${users.size}</div>
+
+<div class="stat">
+${users.size}
+</div>
+
 👤 Users
+
 </div>
 
+
 <div class="card">
+
 <div class="stat">
-${contents.filter(x=>x.type==="audio").length}
+${
+contents.filter(
+item =>
+item.type === "audio"
+).length
+}
 </div>
+
 🎵 Songs
+
 </div>
 
+
 <div class="card">
+
 <div class="stat">
-${contents.filter(x=>x.type==="video").length}
+${
+contents.filter(
+item =>
+item.type === "video"
+).length
+}
 </div>
+
 🎬 Videos
+
 </div>
 
-<div class="card">
-<div class="stat">${pending.length}</div>
-⏳ Pending
-</div>
 
 <div class="card">
+
 <div class="stat">
-${contents.reduce(
-(a,x)=>a+(x.plays||0),0
-)}
+${pending.length}
 </div>
+
+⏳ Pending
+
+</div>
+
+
+<div class="card">
+
+<div class="stat">
+${
+contents.reduce(
+(total,item) =>
+total + (item.plays || 0),
+0
+)
+}
+</div>
+
 ▶ Plays
+
 </div>
 
 `;
@@ -1657,47 +2777,71 @@ ${contents.reduce(
 
 /* PENDING */
 
-$("pendingList").innerHTML=
-pending.length
-?
-""
-:
-'<div class="muted">Pending নেই।</div>';
+$("pendingList").innerHTML =
+"";
 
-pending.forEach(d=>{
 
-const x=d.data();
+if(!pending.length){
 
-const div=
+$("pendingList").innerHTML =
+`
+<div class="muted">
+Pending নেই।
+</div>
+`;
+
+}
+
+
+pending.forEach(documentItem => {
+
+const item =
+documentItem.data();
+
+
+const div =
 document.createElement("div");
 
-div.className="adminitem";
 
-div.innerHTML=`
+div.className =
+"adminitem";
 
-<b>${escapeHTML(x.title)}</b>
+
+div.innerHTML =
+`
+
+<b>
+${escapeHTML(item.title)}
+</b>
+
 
 <div class="small">
 
-🎤 ${escapeHTML(x.artist)}
+🎤 ${escapeHTML(item.artist)}
 
 •
 
-${escapeHTML(x.type)}
+${escapeHTML(item.type)}
 
 •
 
-${escapeHTML(x.email||"")}
+${escapeHTML(item.email || "")}
 
 </div>
 
+
 <div class="actions">
 
-<button class="gold approve">
+<button
+class="gold approveButton"
+>
 ✅ Approve
 </button>
 
-<button class="red reject">
+
+<button
+class="red rejectButton"
+>
 ❌ Reject
 </button>
 
@@ -1705,13 +2849,23 @@ ${escapeHTML(x.email||"")}
 
 `;
 
-div.querySelector(".approve")
-.onclick=
-()=>approveSubmission(d.id,x);
 
-div.querySelector(".reject")
-.onclick=
-()=>rejectSubmission(d.id);
+div.querySelector(".approveButton")
+.onclick =
+() =>
+approveSubmission(
+documentItem.id,
+item
+);
+
+
+div.querySelector(".rejectButton")
+.onclick =
+() =>
+rejectSubmission(
+documentItem.id
+);
+
 
 $("pendingList")
 .appendChild(div);
@@ -1721,80 +2875,124 @@ $("pendingList")
 
 /* PUBLISHED */
 
-$("managedList").innerHTML=
+$("managedList").innerHTML =
 contents.length
 ?
-contents.map(x=>`
+contents.map(
+item =>
+`
 
 <div class="adminitem">
 
-<b>${escapeHTML(x.title)}</b>
+<b>
+${escapeHTML(item.title)}
+</b>
 
 <div class="small">
 
-${escapeHTML(x.artist)}
+🎤 ${escapeHTML(item.artist)}
 
 •
 
-${escapeHTML(x.type)}
+${escapeHTML(item.type)}
 
 •
 
-▶ ${x.plays||0}
+▶ ${item.plays || 0}
 
 •
 
-❤️ ${x.likes||0}
+❤️ ${item.likes || 0}
 
 </div>
 
 </div>
 
-`).join("")
+`
+).join("")
 :
-'<div class="muted">Content নেই।</div>';
+`
+<div class="muted">
+Published content নেই।
+</div>
+`;
+
+
+}catch(error){
+
+$("adminStatus").textContent =
+"❌ Admin load error: " +
+error.message;
+
+}
 
 }
 
 
-/* APPROVE */
+/* =========================
+   APPROVE
+========================= */
 
-async function approveSubmission(id,x){
+async function approveSubmission(
+submissionId,
+item
+){
+
+try{
 
 await addDoc(
-collection(db,"contents"),
+collection(
+db,
+"contents"
+),
 {
 
-type:x.type,
+uid:
+item.uid,
 
-title:x.title,
+type:
+item.type,
 
-artist:x.artist,
+title:
+item.title,
 
-genre:x.genre,
+artist:
+item.artist,
+
+genre:
+item.genre,
 
 station:
-x.genre==="Love"
+item.genre === "Love"
 ?
 "Love"
 :
-x.genre==="Islamic"
+item.genre === "Islamic"
 ?
 "Islamic"
 :
 "MATI Hits",
 
-description:x.description||"",
+lyrics:
+item.lyrics || "",
 
-lyrics:x.lyrics||"",
+contact:
+item.contact || "",
 
-youtube:x.youtube||"",
+youtube:
+item.youtube || "",
 
-facebook:x.facebook||"",
+facebook:
+item.facebook || "",
 
-coverUrl:x.coverUrl||"",
+description:
+item.description || "",
 
-mediaUrl:x.mediaUrl,
+mediaUrl:
+item.mediaUrl,
+
+coverUrl:
+item.coverUrl || "",
 
 published:true,
 
@@ -1802,104 +3000,209 @@ plays:0,
 
 likes:0,
 
-uid:x.uid,
-
-createdAt:serverTimestamp()
+createdAt:
+serverTimestamp()
 
 }
 );
+
 
 await updateDoc(
-doc(db,"submissions",id),
+doc(
+db,
+"submissions",
+submissionId
+),
 {
-status:"Approved",
-reviewedAt:serverTimestamp()
+
+status:
+"Approved",
+
+reviewedAt:
+serverTimestamp()
+
 }
 );
 
-alert("✅ Published");
 
-loadAdmin();
-
-loadPublic();
-
-}
-
-
-/* REJECT */
-
-async function rejectSubmission(id){
-
-await updateDoc(
-doc(db,"submissions",id),
-{
-status:"Rejected",
-reviewedAt:serverTimestamp()
-}
+alert(
+"✅ Content Published"
 );
 
-loadAdmin();
+
+await loadAdmin();
+
+await loadPublic();
+
+
+}catch(error){
+
+alert(
+"Approve Error: " +
+error.message
+);
+
+}
 
 }
 
 
-/* ADMIN UPLOAD */
+/* =========================
+   REJECT
+========================= */
 
-$("adminUpload").onclick=async()=>{
-
-if(
-!auth.currentUser ||
-auth.currentUser.email.toLowerCase()!==ADMIN
+async function rejectSubmission(
+submissionId
 ){
-
-alert("Admin only");
-
-return;
-
-}
-
-const type=$("aType").value;
-
-const title=$("aTitle").value.trim();
-
-const artist=$("aArtist").value.trim();
-
-const media=$("aMedia").files[0];
-
-const cover=$("aCover").files[0];
-
-if(!title||!artist||!media){
-
-$("adminStatus").textContent=
-"⚠️ Title, Artist এবং Media দিন।";
-
-return;
-
-}
 
 try{
 
-const mediaUrl=
-await cloudUpload(
-media,
-$("adminStatus")
+await updateDoc(
+doc(
+db,
+"submissions",
+submissionId
+),
+{
+
+status:
+"Rejected",
+
+reviewedAt:
+serverTimestamp()
+
+}
 );
 
-let coverUrl="";
 
-if(cover){
+await loadAdmin();
 
-coverUrl=
-await cloudUpload(
-cover,
-$("adminStatus")
+
+}catch(error){
+
+alert(
+"Reject Error: " +
+error.message
 );
 
 }
 
+}
+
+
+/* =========================
+   ADMIN UPLOAD
+========================= */
+
+$("adminUpload").onclick =
+async () => {
+
+if(!auth.currentUser){
+
+return;
+
+}
+
+
+if(
+auth.currentUser.email.toLowerCase()
+!==
+ADMIN_EMAIL.toLowerCase()
+){
+
+alert(
+"Admin only"
+);
+
+return;
+
+}
+
+
+const type =
+$("aType").value;
+
+
+const title =
+$("aTitle").value.trim();
+
+
+const artist =
+$("aArtist").value.trim();
+
+
+const mediaFile =
+$("aMedia").files[0];
+
+
+const coverFile =
+$("aCover").files[0];
+
+
+if(!title){
+
+$("adminStatus").textContent =
+"⚠️ Title দিন।";
+
+return;
+
+}
+
+
+if(!artist){
+
+$("adminStatus").textContent =
+"⚠️ Artist দিন।";
+
+return;
+
+}
+
+
+if(!mediaFile){
+
+$("adminStatus").textContent =
+"⚠️ Audio অথবা Video নির্বাচন করুন।";
+
+return;
+
+}
+
+
+try{
+
+const mediaUrl =
+await uploadToCloudinary(
+mediaFile,
+$("adminStatus"),
+$("adminProgress")
+);
+
+
+let coverUrl = "";
+
+
+if(coverFile){
+
+coverUrl =
+await uploadToCloudinary(
+coverFile,
+$("adminStatus"),
+$("adminProgress")
+);
+
+}
+
+
 await addDoc(
-collection(db,"contents"),
+collection(
+db,
+"contents"
+),
 {
+
+uid:
+auth.currentUser.uid,
 
 type:type,
 
@@ -1907,15 +3210,20 @@ title:title,
 
 artist:artist,
 
-genre:$("aGenre").value,
+genre:
+$("aGenre").value,
 
-station:$("aStation").value,
+station:
+$("aStation").value,
 
-description:$("aDesc").value,
+description:
+$("aDesc").value,
 
-mediaUrl:mediaUrl,
+mediaUrl:
+mediaUrl,
 
-coverUrl:coverUrl,
+coverUrl:
+coverUrl,
 
 published:true,
 
@@ -1923,29 +3231,63 @@ plays:0,
 
 likes:0,
 
-createdAt:serverTimestamp()
+createdAt:
+serverTimestamp()
 
 }
 );
 
-$("adminStatus").textContent=
-"✅ Published Successfully";
 
-loadAdmin();
+$("adminStatus").textContent =
+"✅ Upload & Publish সফল হয়েছে।";
 
-loadPublic();
 
-}catch(e){
+$("aTitle").value = "";
 
-$("adminStatus").textContent=
-"❌ "+e.message;
+$("aArtist").value = "";
+
+$("aDesc").value = "";
+
+$("aMedia").value = "";
+
+$("aCover").value = "";
+
+
+await loadAdmin();
+
+await loadPublic();
+
+
+}catch(error){
+
+$("adminStatus").textContent =
+"❌ " + error.message;
 
 }
 
 };
 
 
-/* START */
+/* =========================
+   HOME
+========================= */
+
+$("homeBtn").onclick =
+() => {
+
+window.scrollTo(
+{
+top:0,
+behavior:"smooth"
+}
+);
+
+};
+
+
+/* =========================
+   START
+========================= */
 
 loadPublic();
 
